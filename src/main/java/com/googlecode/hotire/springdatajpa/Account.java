@@ -1,5 +1,7 @@
 package com.googlecode.hotire.springdatajpa;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -7,9 +9,12 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import lombok.Data;
+import javax.persistence.OneToMany;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @Entity
 public class Account {
 
@@ -33,4 +38,19 @@ public class Account {
     @AttributeOverride(name = "state", column = @Column(name = "office_state"))
   })
   private Address officeAddress;
+
+  @OneToMany(mappedBy = "owner")
+  private Set<Study> studies = new HashSet<>();
+
+  public Account addStudy(Study study) {
+    this.getStudies().add(study);
+    study.setOwner(this);
+    return this;
+  }
+
+  public Account remove(Study study) {
+    this.getStudies().remove(study);
+    study.setOwner(null);
+    return this;
+  }
 }

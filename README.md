@@ -5,9 +5,11 @@ Study
 
 ## Entity
 
-Entity는 기본적으로 클래스 이름 사용한다. 
+Entity는 기본적으로 클래스 이름 사용한다.  (객체 세상에서 부르는 이름)
 
+- @Table "릴레이션" 세상에서 부르는 이름 (기본적으로 @Entity 이름이 기본 값)
 
+ 
 ### Entity 상태
 
 - Transient : JPA가 관리하지 않는 상태
@@ -45,5 +47,37 @@ Entity는 기본적으로 클래스 이름 사용한다.
 - @AttributeOverride
 
    
+ 
+## Mapping
+
+관계에는 항상 두 엔티티가 존재한다. 
+
+- 둘 중 하나는 그 관계의 주인(owning), 다른 쪽은 종속된(non-owning)이다.
+
+ 
+### 단방향 
+
+관계를 정의한 쪽이 그 관계의 주인이다. 
+
+1. ManyToOne
+- 기본값은 FK 생성
+
+2. OneToMany
+- 기본 값은 조인 테이블 생성
+
+### 양방향 
+
+- FK 가지고 있는 Entity 가 주인, 기본 값은 @ManyToOne 가지고 있는 Entity 가 주인
+- 주인이 아닌 Entity (@OneToMany)에서 mappedBy 를 통해 관계 설정
+- 주인 Entity 관계를 설정해야 DB에 반영된다. 
+
+
+
+ 
+
+
+
+
+  
 
 
