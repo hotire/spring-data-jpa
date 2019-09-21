@@ -19,4 +19,10 @@ public class Study {
 
   @ManyToOne
   private Account owner;
+
+  public static Study getInstance(String name){
+    Study study = new Study();
+    study.setName(name);
+    return study;
+  }
 }
