@@ -47,7 +47,6 @@ Entity는 기본적으로 클래스 이름 사용한다.  (객체 세상에서 �
 - @AttributeOverride
 
    
- 
 ## Mapping
 
 관계에는 항상 두 엔티티가 존재한다. 
@@ -70,6 +69,25 @@ Entity는 기본적으로 클래스 이름 사용한다.  (객체 세상에서 �
 - FK 가지고 있는 Entity 가 주인, 기본 값은 @ManyToOne 가지고 있는 Entity 가 주인
 - 주인이 아닌 Entity (@OneToMany)에서 mappedBy 를 통해 관계 설정
 - 주인 Entity 관계를 설정해야 DB에 반영된다. 
+
+
+## N + 1
+
+### Fetch Join
+
+패치조인은 SQL에 존재하는 조인의 종류는 아니고 JPQL에서 성능 최적화를 위해 제공하는 기능이다.
+ 
+연관된 엔티티나 컬렉션을 한번에 같이 조회하는 기능이다.
+
+https://meetup.toast.com/posts/87
+https://jojoldu.tistory.com/165
+
+
+### Entity Graph
+
+
+
+## Inheritance
 
 
 

@@ -1,5 +1,7 @@
 package com.googlecode.hotire.springdatajpa;
 
+import java.util.List;
+import java.util.Set;
 import javax.annotation.PostConstruct;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +39,14 @@ public class AccountTest{
 
   @Test
   public void findAll(){
-    accountRepository.findAll();
+    Set<Account> accounts = accountRepository.findAllJoinFetch();
+    accounts.forEach(account -> System.out.println(account.getStudies()));
+  }
+
+  @Test
+  public void findAllEntityGraph(){
+
+    List<Account> accounts = accountRepository.findAll();
+    accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 }
