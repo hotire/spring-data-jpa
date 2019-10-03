@@ -174,7 +174,17 @@ https://jojoldu.tistory.com/165
 
 - JPQL
 
+JPQL은 SQL과 비슷한 문법을 가진 객체 지향 쿼리입니다.
+
 - QueryDSL
+
+JPQL, SQL과 같은 쿼리를 생성할 수 있도록 해 주는 프레임워크
+
+기존 SQL, JPQL는 Type-check가 불가능하고, 컴파일 시점에 알 수 있는 방법이 없다.
+
+실제적으로 쿼리의 실행시점에 오류를 발견한다.
+
+QueryDSL은 컴파일 시점에 문법 오류를 발견할 수 있고, 동적 쿼리이다.
 
 
 
