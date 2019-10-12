@@ -1,6 +1,7 @@
 package com.googlecode.hotire.springdatajpa;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -17,7 +18,7 @@ public class Study {
 
   private String name;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   private Account owner;
 
   public static Study createInstance(String name){

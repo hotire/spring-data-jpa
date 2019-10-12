@@ -19,8 +19,50 @@ RDBMS에서는 PK가 같으면 서로 동일한 record로 정의하지만, Java�
 
 
 ## Persistent Context 영속성 컨텍스트
+
+어플리케이션과 데이터베이스 사이에 존재하는 논리적인 개념으로 엔티티를 저장하는 환경을 의미한다.
+
+최초로 엔티티의 상태를 저장해 두는데 이것을 스냅샵이라고 한다. 
+
+플러시 시점에 스냅샷과 엔티티를 비교해서 업데이트 쿼리를 날린다.
+
 엔티티를 저장하고, 관리하는 컨테이너 
 (1차 캐시를 통해 해당 엔티티를 계속해서 보관하여, 사용할 수 있음)
+
+- 오직 엔티티 매니저를 통해서 접근
+ : entityManger.flush() / transaction.commit() / JPQL 쿼리 실행시 데이터베이스에 반영
+ 
+- LifeCycle : PersistenceContext는 EntityManager가 닫힐 때까지 유지됩니다.
+
+### EntityManger
+
+엔터티 매니저는 데이터베이스를 위해 엔터티를 저장하고 수정하고 삭제하고 조회하는 등 엔터티와 관련된 모든일을 한다
+
+엔티티 매니저는 특정 작업을 위해 데이터베이스에 액세스 하는 역할을 가진 친구이다.
+
+또한 엔티티를 데이터베이스에 등록, 수정, 삭제, 조회할 수 있다.
+
+엔티티와 관련된 모든 일을 처리하기에 이름 그대로 엔티티를 관리하는 관리자다.
+
+일반적으로 엔티티 매니저와 영속성 컨텍스트가 1:1 매핑된다. (다수의 엔티티 매니저가 하나의 영속성 컨텍스트에 접근할 수도 있다.)
+
+- LifeCycle : 프로토타입으로, Proxy로 감싸고 프록시로 EntityManger를 default로 
+
+SharedEntityManagerCreator로 처리한다. Thread-safety하지 않기 때문에 매번 새롭게 EntityManger를 생성해서 처리한다.
+
+한 마디로 트랜잭션과 동일한 라이프 사이클을 갖는다.
+
+- MVC의 경우 OpenEntityManagerInViewInterceptor에 의해 preHandle에 의해
+스레드 로컬에 EntityManger 를 주입하고 시작한다.
+후 afterCompletion에서 해당 스레드 로컬을 지운다. 
+ 
+- Webflux 경우 Interceptor를 사용하지 않고, 스레드 로컬을 지양하기 때문에
+
+스레드 로컬에 EntityManger를 주입하지 않는다.
+
+그렇기에 트랜잭션으로 묶이지 않은 이상, EntityManger의 메서드 호출 마다
+새롭게 생성해서 사용한다.
+
 
 ### 1차 캐싱
 
