@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -20,6 +21,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor
 public class Account {
 
   @Id @GeneratedValue
@@ -28,6 +30,10 @@ public class Account {
   private String username;
 
   private String password;
+
+  public Account(String username) {
+    this.username = username;
+  }
 
   @Embedded
   @AttributeOverrides({

@@ -26,7 +26,6 @@ public class TimeService implements InitializingBean {
       .build();
 
     timeEntity.setStartDate(timeEntity.getLocalDateTime().toString());
-    System.out.println(timeEntity);
     timeRepository.save(timeEntity);
   }
 }

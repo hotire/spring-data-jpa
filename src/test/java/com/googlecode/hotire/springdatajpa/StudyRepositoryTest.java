@@ -35,11 +35,6 @@ public class StudyRepositoryTest {
   }
 
   @Test
-  public void find() {
-    Study study = studyRepository.findByName("hello").orElseThrow();
-  }
-
-  @Test
   public void findAll() {
     List<Study> studies = studyRepository.findAll();
   }
