@@ -10,12 +10,13 @@ import org.springframework.stereotype.Repository;
 
 /**
  * https://jojoldu.tistory.com/372
+ * https://www.baeldung.com/querydsl-with-jpa-tutorial
  */
 @Repository
 public class AccountRepositorySupport  {
 
   @Autowired(required = false)
-  JPAQueryFactory jpaQueryFactory;
+  private JPAQueryFactory jpaQueryFactory;
 
   public List<Account> findByName(String name) {
     return jpaQueryFactory.selectFrom(account).where(account.username.eq(name)).fetch();
