@@ -218,15 +218,19 @@ https://jojoldu.tistory.com/165
 
 JPQL은 SQL과 비슷한 문법을 가진 객체 지향 쿼리입니다.
 
-- QueryDSL
+- Querydsl
 
 JPQL, SQL과 같은 쿼리를 생성할 수 있도록 해 주는 프레임워크
 
 기존 SQL, JPQL는 Type-check가 불가능하고, 컴파일 시점에 알 수 있는 방법이 없다.
 
+Querydsl의 핵심 원칙은 타입 안정성(Type safety)이다. 도메인 타입의 프로퍼티를 반영해서 생성한 쿼리 타입을 이용해서 쿼리를 작성하게 된다. 또한, 완전히 타입에 안전한 방법으로 함수/메서드 호출이 이루어진다.
+
 실제적으로 쿼리의 실행시점에 오류를 발견한다.
 
 QueryDSL은 컴파일 시점에 문법 오류를 발견할 수 있고, 동적 쿼리이다.
+
+- reference : http://www.querydsl.com/static/querydsl/4.0.1/reference/ko-KR/html_single/
 
 
 
