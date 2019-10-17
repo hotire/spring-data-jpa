@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 /**
  * https://jojoldu.tistory.com/372
  * https://www.baeldung.com/querydsl-with-jpa-tutorial
+ * http://www.querydsl.com/static/querydsl/4.0.1/reference/ko-KR/html_single/
  */
 @Repository
 public class AccountRepositorySupport  {
