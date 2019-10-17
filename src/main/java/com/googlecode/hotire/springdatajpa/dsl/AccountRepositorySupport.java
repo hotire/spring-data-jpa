@@ -6,7 +6,7 @@ import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.QAccount;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Repository;
  * http://www.querydsl.com/static/querydsl/4.0.1/reference/ko-KR/html_single/
  */
 @Repository
+@RequiredArgsConstructor
 public class AccountRepositorySupport  {
 
-  @Autowired(required = false)
-  private JPAQueryFactory jpaQueryFactory;
+  private final JPAQueryFactory jpaQueryFactory;
 
   public List<Account> findByName(String name) {
     return jpaQueryFactory.selectFrom(QAccount.account).where(account.username.eq(name)).fetch();
