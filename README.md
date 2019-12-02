@@ -18,7 +18,7 @@ RDBMS는 ‘sameness’라는 하나의 개념을 정확히 정의하는데, 바
 RDBMS에서는 PK가 같으면 서로 동일한 record로 정의하지만, Java에서는 주솟값이 같거나 내용이 같은 경우를 구분하여 정의한다.
 
 
-## Persistent Context 영속성 컨텍스트
+### Persistent Context 영속성 컨텍스트
 
 어플리케이션과 데이터베이스 사이에 존재하는 논리적인 개념으로 엔티티를 저장하는 환경을 의미한다.
 
