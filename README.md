@@ -45,7 +45,7 @@ persistence 설정 정보 (persistence.xml) 을 읽어서 JPA 기반 객체를 �
 
 - 여러 스레드가 동시에 접근해도 안전하다. 
 
-### EntityManger
+## EntityManger
 
 엔터티 매니저는 데이터베이스를 위해 엔터티를 저장하고 수정하고 삭제하고 조회하는 등 엔터티와 관련된 모든일을 한다
 
@@ -73,6 +73,43 @@ SharedEntityManagerCreator로 처리한다. Thread-safety하지 않기 때문에
 
 그렇기에 트랜잭션으로 묶이지 않은 이상, EntityManger의 메서드 호출 마다
 새롭게 생성해서 사용한다.
+
+
+### Flush 
+
+플러시는 영속성 컨텍스트의 변경 내용을 데이터베이스에 반영한다.
+
+플러시는 영속성 컨텍스트에 보관된 엔티티를 지운다고 생각하면 안된다. 
+
+영속성 컨텍스트의 변경 내용을 데이터베이스에 동기화하는 것이 플러시다.
+
+
+플러시 방법은 3가지다. 
+
+1. flush() 직접 호출한다.
+
+2. 트랜잭션 커밋 시 플러시가 자동 호출
+
+3. JPQL 쿼리 실행 시 플러시가 자동 호출
+
+```
+em.persist(A);
+em.persist(B);
+em.persist(C);
+
+List<Member> members = em.createQuery("select m from Member m", Member.class);
+```
+
+A, B, C 영속 상태로 만들었지만, 아직 데이터 베이스에 반영되지 않았다. 
+
+하지만 중간에 JPQL를 통해 조회를 한다면 A, B, C 는 조회되지 않는다. 
+
+이런 문제를 방지하고자 JPQL은 쿼리를 실행하기 직전에 영속성 컨텍스트를 플러시한다.
+
+
+- MODE
+  - FlushModeType.AUTO : 커밋이나 쿼리를 실행할 때 플러시 (기본 전략)
+  - FlushModeType.COMMIT : 커밋할 떄만 플러시
 
 
 ### 1차 캐싱
