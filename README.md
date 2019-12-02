@@ -34,6 +34,16 @@ RDBMS에서는 PK가 같으면 서로 동일한 record로 정의하지만, Java�
  
 - LifeCycle : PersistenceContext는 EntityManager가 닫힐 때까지 유지됩니다.
 
+
+### EntityManagerFactory
+
+persistence 설정 정보 (persistence.xml) 을 읽어서 JPA 기반 객체를 생성한다. 
+
+데이터베이스 커텍션 풀도 생성하므로 엔티티 매니저 패곹리를 생성하는 비용은 아주 크다.
+
+따라서 엔티티 매니저 팩토리는 애플리케이션 전체에서 딱 한 번만 생성하고 공유해서 사용해야 한다.
+
+
 ### EntityManger
 
 엔터티 매니저는 데이터베이스를 위해 엔터티를 저장하고 수정하고 삭제하고 조회하는 등 엔터티와 관련된 모든일을 한다
