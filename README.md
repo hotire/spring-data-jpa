@@ -207,6 +207,19 @@ IDENTITY 의 경우 먼저 엔티티를 데이터베이스에 저장한 후에 �
 SEQUENCE 전략은 먼저 데ㅣ터베이스 시퀀스를 사용해서 식별자를 조회하고 영속성 컨텍스트에 저장한다.
 
 
+### 레퍼런스 
+
+1. @Enumerated 
+```
+enum Role {
+  ADMIN, USER
+}
+```
+ - ORDINAL : 순서를 데이터베이스에 저장 (ADMIN은 0, USER는 1)
+ - STRING : 이름을 데이터베이스에 저장 (ADMIIN은 'ADMIN', USER는 'USER')
+ 
+
+
 
 ## Value 
 
