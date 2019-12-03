@@ -243,6 +243,15 @@ enum Role {
 
 - @AttributeOverride
 
+
+### 식별 관계 vs 비식별 관계
+
+외래키가 기본 키에 포함되는지 여부에 따라 식별 고나계와 비식별 관계로 구분한다.
+
+
+- 식별 관계 매핑 시, @IdClass or @EmbeddedId를 사용해서 식별자를 매핑해야 한다.
+
+
    
 ## Mapping
 
