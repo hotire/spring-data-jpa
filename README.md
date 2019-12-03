@@ -334,6 +334,11 @@ https://jojoldu.tistory.com/165
 
 ### 조인 전략 Joined
 
+- 테이블이 정규화된다.
+
+- 등록할 INSERT SQL을 두 번 실행한다.
+
+- 조인이 많이 사용된다.
 
 ### 구현 클래스마다 테이블 Table Per Class
 
