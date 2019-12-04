@@ -40,7 +40,7 @@ public class AccountTest{
 
   @Test
   public void findAll() {
-    Set<Account> accounts = new HashSet<>(accountRepository.findAll());
+    List<Account> accounts = accountRepository.findAll();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println("study : " + account.getStudies().size()));
   }

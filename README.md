@@ -319,28 +319,6 @@ Team team = member.getTeam();
 
 2. 객체지향 쿼리 사용 (JPQL)
 
-
-
-## N + 1 Problem
-
-### Fetch Join
-
-패치조인은 SQL에 존재하는 조인의 종류는 아니고 JPQL에서 성능 최적화를 위해 제공하는 기능이다.
- 
-연관된 엔티티나 컬렉션을 한번에 같이 조회하는 기능이다.
-
-- Fetch Join의 결과가 카테시안 곱이기 때문에 Set으로 반환한다.
-
-https://meetup.toast.com/posts/87
-https://jojoldu.tistory.com/165
-
-
-### Entity Graph
-
-엔티티들의 Fetch 전략을 컴파일 시점에 결정하게 되는데, 
-
-런타임 시점에 관여한다.
-
 ## Inheritance 상속
 
 ### 단일 테이블 Single Table
@@ -491,8 +469,29 @@ from Member m
 - DISTINCT를 COUNT에서 사용할 떄 임베디드 타입을 지원하지 않는다.
 
 
+### 조인
 
+- 내부조인 : INNER JOIN를 사용한다. INNER을 생략할 수 있다.
 
+- 외부조인 : OUTER는 생략 가능해서 보통 LEFT JOIN으로 사용한다.
+
+- 세타조인 : 내부 조인만 지원한다.
+
+JPA 2.1 이후부터 JOIN ON을 지원한다.
+
+- 패치 조인 : SQL 조인은 아니고, JPQL에서 성능 최적화를 위해 제공하는 기능이다.
+            연관된 엔티티나 컬렉션을 한 번에 같이 조회하는 기능이다. (join fecth)
+
+  - 패치 조인의 특징과 한계
+    - SQL 한 번으로 연관된 엔티티들을 함께 조회할 수 있어서 성능 최적화를 할 수 있다.
+    - 패치 조인 대상에는 별칭을 줄 수 없다. 따라서 SELECT, WHERE 절 서브 쿼리에 패치 조인 대상을 사용 할 수 없다.
+    - 둘 이상의 컬렉션을 패치 할 수 없다. 
+    - 컬렉션을 패치 조인하면 페이징 API를 사용할 수 없다. (일대다가 아닌 일대일, 다대일은 가능)
+    
+    
+          
+          
+     
 
 ### Querydsl
 
@@ -524,3 +523,22 @@ JPQL을 생성하는 빌더 클래스다. 문자가 아닌 코드로 JPQL을 작
   
 
 
+## N + 1 Problem
+
+### Fetch Join
+
+패치조인은 SQL에 존재하는 조인의 종류는 아니고 JPQL에서 성능 최적화를 위해 제공하는 기능이다.
+ 
+연관된 엔티티나 컬렉션을 한번에 같이 조회하는 기능이다.
+
+- Fetch Join의 결과가 카테시안 곱이기 때문에 Set으로 반환한다.
+
+https://meetup.toast.com/posts/87
+https://jojoldu.tistory.com/165
+
+
+### Entity Graph
+
+엔티티들의 Fetch 전략을 컴파일 시점에 결정하게 되는데, 
+
+런타임 시점에 관여한다.
