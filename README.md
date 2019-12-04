@@ -373,14 +373,37 @@ https://jojoldu.tistory.com/165
 - 자식 테이블을 함께 조회하기 힘들다. UNION 사용해야 한다..
  
 
- 
-## 기타
 
-- JPQL
+# 객제지향 쿼리 언어
+
+## JPQL
 
 JPQL은 SQL과 비슷한 문법을 가진 객체 지향 쿼리입니다.
 
-- Querydsl
+- 테이블이 아닌 객체를 대상으로 검색하는 객체지향 쿼리다.
+
+- SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다.
+
+
+### 문법
+
+```
+select_문 :: = 
+  select_절
+  from_절
+  [where_절]
+  [groupby_절]
+  [having_절]
+  [orderby_절]
+  
+update_문 :: = update_절 [where_절]
+delete_문 :: = delete_절 [where_절]  
+```
+
+
+
+
+### Querydsl
 
 JPQL, SQL과 같은 쿼리를 생성할 수 있도록 해 주는 프레임워크
 
@@ -393,6 +416,16 @@ Querydsl의 핵심 원칙은 타입 안정성(Type safety)이다. 도메인 타�
 QueryDSL은 컴파일 시점에 문법 오류를 발견할 수 있고, 동적 쿼리이다.
 
 - reference : http://www.querydsl.com/static/querydsl/4.0.1/reference/ko-KR/html_single/
+
+
+### Criteria 
+
+JPQL을 생성하는 빌더 클래스다. 문자가 아닌 코드로 JPQL을 작성할 수 있다.
+
+코드이기 때문에, 런타임 시점이 아닌 컴파일 시점에 오류를 발견할 수 있다.
+
+- Annotation Processor 기능을 통해 만들어진 메타 모델을 사용하면 온전히 코드만 사용해서 쿼리를 작성할 수 있다.
+
 
 
 
