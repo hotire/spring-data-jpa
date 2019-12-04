@@ -447,6 +447,52 @@ setParameter(1, ...)
 SQL을 파싱한 결과를 재사용한다. 그러므로 꼭 쓰자. :) 
 
 
+### Projection 프로젝션
+
+SELECT 절에서 조회할 대상을 지정하는 것을 프로젝션이라 한다.
+
+프로젝션 대상으로 엔티티, 엠비디드 타입, 스칼라 타입이 있다. (스칼라 타입은 숫자, 문자 등 기본 데이터 타입)
+
+- 엠비디드 타입은 엔티티가 아닌 값 타입으로 영속성 컨텍스트에서 관리되지 않는다.
+
+
+### 페이징 
+
+JPA는 페이징을 다음 두 API로 추상화했다.
+
+
+- setFirstResult(int startPosition) : 조회 시작 위치 (0부터 시작)
+
+- setMaxResult(int maxResult) : 조회할 데이터 수
+
+### 집합
+
+집한은 통계 정보를 구할 떄 사용한다. 
+
+```
+select 
+  COUNT(m),      // 회원수
+  SUM(m.age),    // 나이 합
+  AVG(m.age),    // 평균 나이
+  MAX(m.age),    // 최대 나이
+  MIN(m.age),    // 최소 나이
+from Member m  
+```
+
+주의 사항
+- NULL 값은 무시하므로 통계제 잡히지 않는다.
+
+- 만약 값이 없는데 SUM, AVG, MAX, MIN 함수를 사용하면 NULL 값이 된다. COUNT는 0
+
+- DISTINCT를 집합 함수 안에서 사용해서 중복된 값을 제거하고 나서 집합을 구할 수 있다. 
+
+  - ex) select COUNT(DISTINCT m.age) from Member m
+
+- DISTINCT를 COUNT에서 사용할 떄 임베디드 타입을 지원하지 않는다.
+
+
+
+
 
 ### Querydsl
 
