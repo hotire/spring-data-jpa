@@ -401,6 +401,51 @@ delete_문 :: = delete_절 [where_절]
 ```
 
 
+- 대소문자 구분
+  엔티티와 속성은 대소문자를 구분한다. 예를 들어 Member, username은 대소문자를 구분한다.
+  반면, SELECT / FROM / AS 같은 JPQL 키워드는 대소문자를 구분하지 않는다.
+  
+- 별칭 필수
+  Member AS m 을 보면 Member 엔티티에 별칭을 주었다. JPQL은 별칭은 필수로 사용해야 한다.
+  AS는 생략할 수 있다.
+  
+   
+- 콜렉션 결과가 없으면 빈 컬렉션을 반환한다. 
+
+- 하나 요청시, 결과가 없으면 NoResultException 발생 / 결과가 1개보다 많으면 NonUniqueResultException이 발생한다.
+
+
+### 파라미터 바인딩
+
+JDBC는 위치 기 파라미터 바인딩만 지원하지만, JPQL은 이름 기준 파라미터 바인딩도 지원한다.
+
+- 이름 기준 바인딩 : 앞에 ':' 를 사용한다.
+
+```
+select m from Member m where m.username = :username
+
+
+setParameter("username", ...)
+```
+
+
+- 위치 기준 바인딩 : '?' 다음에 위치 값을 주면 된다.
+
+```
+select m from Member m where m.username = ?1
+
+
+setParameter(1, ...)
+```
+
+
+
+파라미터 바인딩을 사용하면 SQL 인젝션 방어를 할 수도 있고, 
+
+애플리케이션 JPQL을 SQL로 파싱한 결과를 재사용할 수 있다. 또한 데이터베이스 내부에서도
+
+SQL을 파싱한 결과를 재사용한다. 그러므로 꼭 쓰자. :) 
+
 
 
 ### Querydsl
