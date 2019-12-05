@@ -2,18 +2,16 @@ package com.googlecode.hotire.springdatajpa.criteria;
 
 
 import com.googlecode.hotire.springdatajpa.Account;
-import com.googlecode.hotire.springdatajpa.Study;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
+import javax.persistence.criteria.Subquery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,5 +87,21 @@ public class AccountTest {
         .select(accountRoot);
 
     final List<Account> accounts = entityManager.createQuery(criteriaQuery).getResultList();
+  }
+
+  @Test
+  public void subquery() {
+    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<Account> criteriaQuery = cb.createQuery(Account.class);
+
+    final Subquery<Double> subquery = criteriaQuery.subquery(Double.class);
+
+    final Root<Account> a2 = subquery.from(Account.class);
+
+    subquery.select(cb.avg(a2.<Integer>get("age")));
+
+    final Root<Account> a = criteriaQuery.from(Account.class);
+    criteriaQuery.select(a)
+        .where(cb.ge(a.<Integer>get("age"), subquery));
   }
 }

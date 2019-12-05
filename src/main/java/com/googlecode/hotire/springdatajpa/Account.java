@@ -31,6 +31,8 @@ public class Account {
 
   private String password;
 
+  private Integer age;
+
   public Account(String username) {
     this.username = username;
   }
