@@ -687,6 +687,66 @@ JPQL로 부모 엔티티를 조회하면 그 자식 엔티티도 함께 조회�
    select i from Itme i where treat(i as Book).author = 'kim'
   ```
  
+
+### 사용자 정의 함수 (JPA 2.1)
+
+function_invocation:: = FUNCTION(function_name {, funtion_arg}*)
+
+```
+select function('group_concat', i.name) from Item i 
+``` 
+
+### NULL 
+
+- 조건을 만족하는 데이터가 하나도 없으면 NULL 이다.
+- NULL은 알 수 없는 값이다. NULL과 모든 수학적 계산 결과는 NULL이다. 
+- NULL == NULL은 NULL 이다. 
+- NULL IS NULL은 참이다. 
+
+
+### Named 쿼리 : 정적 쿼리 
+
+JPQL 쿼리는 크게 동적 쿼리와 정적 쿼리로 나눌 수 있다. 
+
+- 동적 쿼리 : em.createQuery(...) 처럼 JPQL을 문자로 완성해서 직접 넘기는 것을 동적 쿼리
+
+- 정적 쿼리 : 미리 정의한 쿼리에 이름을 부여해서 필요할 떄 사용하는 쿼리 
+
+
+Named 쿼리는 애플리케이션 로딩 시점에 JPQL 문법을 체크하고 머리 파싱해둔다. 
+
+따라서 오류를 빨리 확인할 수 있고, 사용하는 시점에 파싱된 결과를 재사용하므로 성능상 이점이 있다. 
+
+- Named 쿼리는 영속성 유닛 단위로 관리되므로 충돌을 방지하기 위해 엔티티 이름을 앞에 통상적으로 준다.
+- XML / Annotation 같은 설정이 있으면 XML이 우선권을 갖는다. 
+
+
+## Criteria 
+
+JPQL을 생성하는 빌더 클래스다. 문자가 아닌 코드로 JPQL을 작성할 수 있다.
+
+코드이기 때문에, 런타임 시점이 아닌 컴파일 시점에 오류를 발견할 수 있다.
+
+- Annotation Processor 기능을 통해 만들어진 메타 모델을 사용하면 온전히 코드만 사용해서 쿼리를 작성할 수 있다.
+
+
+```
+  @Test
+  public void findAll() {
+    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<Account> criteriaQuery = cb.createQuery(Account.class);
+
+    final Root<Account> accountRoot = criteriaQuery.from(Account.class);  // FROM
+    criteriaQuery.select(accountRoot);                                    // SELECT
+
+    final TypedQuery<Account> query = entityManager.createQuery(criteriaQuery);
+    final List<Account> accounts = query.getResultList();
+  }
+```
+
+
+
+ 
 ## Querydsl
 
 JPQL, SQL과 같은 쿼리를 생성할 수 있도록 해 주는 프레임워크
@@ -700,21 +760,6 @@ Querydsl의 핵심 원칙은 타입 안정성(Type safety)이다. 도메인 타�
 QueryDSL은 컴파일 시점에 문법 오류를 발견할 수 있고, 동적 쿼리이다.
 
 - reference : http://www.querydsl.com/static/querydsl/4.0.1/reference/ko-KR/html_single/
-
-
-### Criteria 
-
-JPQL을 생성하는 빌더 클래스다. 문자가 아닌 코드로 JPQL을 작성할 수 있다.
-
-코드이기 때문에, 런타임 시점이 아닌 컴파일 시점에 오류를 발견할 수 있다.
-
-- Annotation Processor 기능을 통해 만들어진 메타 모델을 사용하면 온전히 코드만 사용해서 쿼리를 작성할 수 있다.
-
-
-
-
-
-  
 
 
 ## N + 1 Problem
