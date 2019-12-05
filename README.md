@@ -572,7 +572,68 @@ select m.username from Team t join t.members m
   - 조인이 성능적으로 차지하는 부분은 크다. 또한 묵시적 조인이 일어나는 상황을 한 눈에 파악하기 힘들다. 
     성능이 중요한 부분이면 명시적 조인을 사용하자. 
         
-   
+
+### 서브 쿼리
+
+JPQL도 SQL처럼 서브 쿼리를 지원한다. 단 몇가지 제약이 있는데 서브 쿼리를 WHERE, HAVING 절에만 사용할 수 있고
+
+SELECT, FROM 절에는 사용할 수 없다. 
+
+
+- ex) 나이가 평균보다 많은 회원을 찾는다. 
+```
+select m from Member m 
+where m.age > (select  avg(m2.age) from Member m2)
+```
+
+- ex) 한 건이라도 주문한 고객을 찾는다. 
+
+```
+select m From Member m 
+where (select count(o) from Order o where m = o.member) > 0
+```
+
+참고로 이 쿼리는 다음처럼 컬렉션 값 연관 필드의 size 기능을 사용해도 같은 결과를 얻을 수 있다. (실행되는 SQL도 같다.)
+
+```
+select m from Member m 
+where m.orders.size > 0
+```
+
+
+- 서브 쿼리 함수 : 서브 쿼리는 다음 함수들과 같이 사용할 수 있다. 
+  - [NOT] EXISTS (subquery)
+    서브 쿼리에 결과가 존재하면 참이다. 
+    
+    ex) 팀A 소속인 회원
+    ```
+    select m from Member m 
+    where exists (select t from m.team t where t.name = '팀A')
+    ```
+  - [ALL | ANY | SOME] (subquery)
+    - ALL : 조건을 모두 만족하면 참이다. 
+    - ANY 혹은 SOME : 조건을 하나라도 만족하면 참이다. 
+    
+    ex) 전체 상품 각각의 재고보다 주문량이 많은 주문들 
+    ```
+    select o from Order o
+    where o.orderAmount > ALL (select p.stockAmount from Product p)
+    ```
+    
+    ex) 어떤 팀이든 팀에 소속된 회원
+    ```
+    select m from Member m
+    where m.team = ANY (select t from Team t)
+    ```
+  - [NOT] IN (subquery)
+    서브쿼리의 결과 중 하나라도 같은 것이 있으면 참이다. 
+    
+    ex) 20세 이상을 보유한 팀 
+    ```
+    select t from Team t 
+    where t IN (select t2 from Team t2 JOIN t2.members m2 where m2.age >= 20)
+    ```
+    
 
 ### Querydsl
 
