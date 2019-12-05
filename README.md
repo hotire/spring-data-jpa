@@ -670,8 +670,24 @@ where m.orders.size > 0
 - CASE 식 : 특정 조건에 따라 분기할 떄 CASE 식을 사용한다. 4가지 종류가 있다. 
   - https://joont92.github.io/jpa/JPQL/ 이것도 마찬가지..
   
+
+### 다형성 쿼리 
+
+JPQL로 부모 엔티티를 조회하면 그 자식 엔티티도 함께 조회한다. 
+
+- TYPE : 상속 구조에서 조회 대상을 특정 자식 타입으로 한정할 때 주로 사용한다. 
+  ```
+  select i from Item i 
+  where type(i) IN (Book, Movie)
+  ```
+
+- TREAT (JPA 2.1) : 자바의 타입 캐스팅과 비슷하다. 상숙 구조에서 부모 타입을 특정 자식 타입으로
+  다룰 때 사용한다. 
+  ```
+   select i from Itme i where treat(i as Book).author = 'kim'
+  ```
  
-### Querydsl
+## Querydsl
 
 JPQL, SQL과 같은 쿼리를 생성할 수 있도록 해 주는 프레임워크
 
