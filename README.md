@@ -743,8 +743,29 @@ JPQL을 생성하는 빌더 클래스다. 문자가 아닌 코드로 JPQL을 작
     final List<Account> accounts = query.getResultList();
   }
 ```
+- Query Root 
+  - 쿼리 루트는 조회의 시작점이다. 
+  - Criteria 에서 사용하는 특병할 별칭이다. 
+  - 별칭은 엔티티에만 부여할 수 있다. 
+  - root.get("team").get("name") JPQL m.team.name과 같다. 
 
 
+### 집합 
+
+- Group By
+
+- HAVING 
+
+- 조인 : join() 메서드와 JoinType 클래스를 사용한다. 
+
+```
+m.join("team")                  // 내부 조인 
+m.join("team", JoinType.INNER); // 내부 조인 
+m.join("team",JoinType.LEFT);   // 외부 조인
+m.fetch("team", JoinType.LEFT)  // 패치 조인 
+```
+
+### 서브 쿼리 
 
  
 ## Querydsl
