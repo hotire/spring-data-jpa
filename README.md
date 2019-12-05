@@ -764,11 +764,6 @@ m.join("team", JoinType.INNER); // 내부 조인
 m.join("team",JoinType.LEFT);   // 외부 조인
 m.fetch("team", JoinType.LEFT)  // 패치 조인 
 ```
-
-### 서브 쿼리 
-
-
-
  
 ## Querydsl
 
