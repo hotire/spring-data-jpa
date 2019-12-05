@@ -14,6 +14,7 @@ public class AccountQuerydslRepositorySupport extends QuerydslRepositorySupport 
   public AccountQuerydslRepositorySupport() {
     super(Account.class);
   }
+
   public List<Account> findByName(String name) {
     return from(QAccount.account).where(account.username.eq(name)).fetch();
   }
