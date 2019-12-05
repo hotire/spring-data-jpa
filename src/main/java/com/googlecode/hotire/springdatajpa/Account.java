@@ -51,7 +51,7 @@ public class Account {
   })
   private Address officeAddress;
 
-  @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private Set<Study> studies = new HashSet<>();
 
   public Account addStudy(Study study) {

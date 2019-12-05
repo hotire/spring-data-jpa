@@ -2,6 +2,7 @@ package com.googlecode.hotire.springdatajpa.dsl;
 
 import static com.googlecode.hotire.springdatajpa.QAccount.account;
 
+
 import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.QAccount;
 import java.util.List;

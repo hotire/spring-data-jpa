@@ -1,9 +1,9 @@
 package com.googlecode.hotire.springdatajpa;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,9 @@ public class AccountTest{
 
   @Autowired
   private AccountRepository accountRepository;
+
+  @Autowired
+  private EntityManager entityManager;
 
   @PostConstruct
   public void config () {
@@ -64,4 +67,16 @@ public class AccountTest{
     List<Account> accounts = accountRepository.findAllEntityGraph();
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
+
+  @Test
+  public void bulk() {
+    final String qlString = "update Account a "
+        + "set a.age = a.age + 1"
+        + "where a.username = :username";
+
+    entityManager.createQuery(qlString)
+        .setParameter("username", "hotire")
+        .executeUpdate();
+  }
+
 }
