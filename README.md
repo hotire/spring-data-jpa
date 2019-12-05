@@ -489,9 +489,90 @@ JPA 2.1 이후부터 JOIN ON을 지원한다.
     - 컬렉션을 패치 조인하면 페이징 API를 사용할 수 없다. (일대다가 아닌 일대일, 다대일은 가능)
     
     
+### 경로 표현식
+
+경로 표현식을 쉽게 설명하면, .(점)을 찍어 객체 그래프를 탐색하는 것이다.
+
+m.username, m.team 모두 경로 표현식을 사용한 예다.
+
+
+- 상태 필드 : 단순히 값을 저장하기 위한 필드
+
+- 연관 필드 : 연관관계를 위한 필드, 임베디드 타입 포함
+  - 단일 값 연관 필드 : @ManyToOne, @OneToOne 와 같이 대상이 엔티티
+  - 컬레션 값 연관 필드 : @OneToMany, @ManyToMany 와 같이 대상이 컬렉션
+  
+  
+
+상태 필드 경로는 겸로 탐색의 끝이다. 더는 탐색할 수 없다. 단일, 컬렉션 값 연관 경로는 묵시적으로 내부 조인이 일어난다.
+
+단일 값은 계속해서 탐색하지만, 컬렉션은 탐색이 불가능하다. 단 FROM절에서 조인을 통해 별칭을 얻으면 별칭으로 탐색이 가능하다.
+
+
+1. 상태 필드 경로 탐색 
+
+- JPQL
+```
+select m.username, m,age from Member m
+```
+
+- SQL
+```
+select m.username, m.age from Member m
+```
+  
+
+2. 단일 값 연관 경로 탐색
+
+- JPQL
+
+```
+select o.member from Order o
+```          
+
+- SQL
+
+```
+select m.*
+from Order o 
+  inner join Member m on o.member_id = m.id   
+
+```
+단일 값 연관 필드로 경로 탐색을 하면 SQL에서 내부 조인이 발생한다.
+
+명시적으로 JOIN을 직접 적어줄 수 있다. 묵시적으로 조인이 일어나면 무조건 내부조인!!
+
+```
+select m from Member m join m.team t
+```
+ex) 명시적 조인
           
-          
-     
+
+2. 컬렉션 값 연관 경로 탐색
+
+JPQL을 다루면서 가장 많이 하는 실수 중 하나는 컬렉션 값에서 경로 탐색을 시도하는 것이다. 
+
+
+```
+select t.members from Team t  // 성공 
+select t.members.username from Team t // 실패 
+```
+
+t.members 처럼 컬렉션까지는 경로 탐색이 가능하지만, t.members.username처럼 컬렉션에서 경로 탐색을 시도하는 것은 불가능하다.
+만약 컬렉션에서 경로 탐색을 하고 싶으면 새로운 별칭을 획득해야 한다.
+
+```
+select m.username from Team t join t.members m
+``` 
+
+- 경로 탐색시 주의 사항
+  - 항생 내부 조인이다.
+  - 컬렉션은 경로 탐색의 끝이다. 경로 탐색을 하기 위해선 명시적으로 조인해서 별칭을 얻어야 한다.
+  - 경로 탐색은 주로 SELECT, WHERE 절에서 사용하지만 묵시적 조인으로 인해 SQL FROM 절에 영향을 준다.
+  - 조인이 성능적으로 차지하는 부분은 크다. 또한 묵시적 조인이 일어나는 상황을 한 눈에 파악하기 힘들다. 
+    성능이 중요한 부분이면 명시적 조인을 사용하자. 
+        
+   
 
 ### Querydsl
 
