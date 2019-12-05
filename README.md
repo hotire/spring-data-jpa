@@ -634,7 +634,43 @@ where m.orders.size > 0
     where t IN (select t2 from Team t2 JOIN t2.members m2 where m2.age >= 20)
     ```
     
+### 조건식 
 
+- 타입 표현 
+  - 문자 : ''작은 따옴표 사이에 표현한다. 
+  - 숫자 : L, D ,F 사용한다.
+  - 날짜 : {d '2012-10-01'}, {t '10-11-11'}, {ts '2012-03-04 10-11-11.123'}
+  - Enum : 패키지명을 포함한 전체 이름을 사용해야 한다. com.github.hotire.ADMIN
+  - 엔티티 타입 : 엔티티의 타입을 표현한다. 주로 상속과 관련해 사용 TYPE(m) = Member
+
+
+- 연산자 우선 순위
+  1. 경로 탐색 연산 (.)
+  2. 수학 연산 : +, -(단항 연산자), *, /, +, -
+  3. 비교 연산 : =, >, <, <>, [NOT] BETWEEN, LIKE, IN, IS [NOT] NUL | EMPTY, EXISTS 
+  4. 논리 연산 : NOT, AND, OR
+
+- 컬렉션 식 : 컬렉션에만 사용하는 특별한 기능이다. 
+  - 빈 컬렉션 비교식 : {컬렉션 값 연관 경로} IS [NOT] EMPTY
+  
+  ex) 주문이 하나라도 있는 회원 조회  
+  ```
+  select m from Member m where m.orders is not empty
+  ```
+  
+  - 컬렉션의 멤버 식 : 엔티티나 값이 컬렉션에 포함되어 있으면 참 
+  ```
+  select t from Team t 
+  where :memberParam member of t.members
+  ```
+  
+- 스칼라 식 : 숫자, 문자, 날짜 case, 엔티티 타입 기본적인 타입들을 말한다. 
+  - https://joont92.github.io/jpa/JPQL/ 너무 많으니... 여기서 보자 
+  
+- CASE 식 : 특정 조건에 따라 분기할 떄 CASE 식을 사용한다. 4가지 종류가 있다. 
+  - https://joont92.github.io/jpa/JPQL/ 이것도 마찬가지..
+  
+ 
 ### Querydsl
 
 JPQL, SQL과 같은 쿼리를 생성할 수 있도록 해 주는 프레임워크
