@@ -103,5 +103,37 @@ public class AccountTest {
     final Root<Account> a = criteriaQuery.from(Account.class);
     criteriaQuery.select(a)
         .where(cb.ge(a.<Integer>get("age"), subquery));
+
+    final List<Account> accounts = entityManager.createQuery(criteriaQuery).getResultList();
+  }
+
+  @Test
+  public void in() {
+    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<Account> criteriaQuery = cb.createQuery(Account.class);
+
+    final Root<Account> accountRoot = criteriaQuery.from(Account.class);               // FROM
+
+    criteriaQuery
+        .select(accountRoot)
+        .where(cb.in(accountRoot.get("username")).value("hotire"));
+
+    final List<Account> accounts = entityManager.createQuery(criteriaQuery).getResultList();
+  }
+
+  @Test
+  public void parameter() {
+    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<Account> criteriaQuery = cb.createQuery(Account.class);
+
+    final Root<Account> accountRoot = criteriaQuery.from(Account.class);               // FROM
+
+    criteriaQuery
+        .select(accountRoot)
+        .where(cb.equal(accountRoot.get("username"), cb.parameter(String.class, "usernameParameter")));
+
+    final List<Account> accounts = entityManager.createQuery(criteriaQuery)
+        .setParameter("usernameParameter", "회원1")
+        .getResultList();
   }
 }
