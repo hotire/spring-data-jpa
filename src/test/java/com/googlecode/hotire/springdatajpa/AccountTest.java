@@ -1,9 +1,12 @@
 package com.googlecode.hotire.springdatajpa;
 
+import static org.assertj.core.api.Java6Assertions.assertThat;
+
 import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,10 @@ public class AccountTest{
     account2.addStudy(Study.createInstance("hello5"));
     account2.addStudy(Study.createInstance("hello6"));
     accountRepository.saveAndFlush(account2);
+    Account account3 = new Account();
+    account3.setUsername("hotire");
+    account3.setAge(1);
+    accountRepository.saveAndFlush(account3);
     System.out.println(accountRepository.findAll().size());
   }
 
@@ -77,6 +84,19 @@ public class AccountTest{
     entityManager.createQuery(qlString)
         .setParameter("username", "hotire")
         .executeUpdate();
+  }
+
+  @Test
+  public void dirtyReadByBulk() {
+    final Account account = entityManager.createQuery("select a from Account a where a.username = :name", Account.class)
+        .setParameter("name", "hotire")
+        .getSingleResult();
+
+    assertThat(account.getAge()).isEqualTo(1);
+
+    bulk();
+
+    assertThat(account.getAge()).isEqualTo(1);
   }
 
 }
