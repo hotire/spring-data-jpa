@@ -6,16 +6,13 @@ import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import org.assertj.core.api.Assertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @DataJpaTest
-public class AccountTest{
+class AccountTest {
 
   @Autowired
   private AccountRepository accountRepository;
@@ -43,40 +40,40 @@ public class AccountTest{
   }
 
   @Test
-  public void find() {
+  void find() {
     Account result = accountRepository.findById(1L).orElseThrow();
     System.out.println(result.getStudies());
   }
 
   @Test
-  public void findAll() {
+  void findAll() {
     List<Account> accounts = accountRepository.findAll();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println("study : " + account.getStudies().size()));
   }
 
   @Test
-  public void findAllJoinFetch(){
+  void findAllJoinFetch(){
     Set<Account> accounts = accountRepository.findAllJoinFetch();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 
   @Test
-  public void findAllJoinLeft() {
+  void findAllJoinLeft() {
     List<Account> accounts = accountRepository.findAllJoinLeft();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 
   @Test
-  public void findAllEntityGraph(){
+  void findAllEntityGraph(){
     List<Account> accounts = accountRepository.findAllEntityGraph();
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 
   @Test
-  public void bulk() {
+  void bulk() {
     final String qlString = "update Account a "
         + "set a.age = a.age + 1"
         + "where a.username = :username";
@@ -85,20 +82,18 @@ public class AccountTest{
         .setParameter("username", "hotire")
         .executeUpdate();
   }
-  /**
-   * bulk 연산은 데이터베이스에 직접 접근하여 entityManager, 영속성 컨텍스트를 무시한다.
-   */
-  @Test
-  public void dirtyReadByBulk() {
-    final Account account = entityManager.createQuery("select a from Account a where a.username = :name", Account.class)
-        .setParameter("name", "hotire")
-        .getSingleResult();
 
-    assertThat(account.getAge()).isEqualTo(1);
+  @DisplayName("bulk 연산은 데이터베이스에 직접 접근하여 entityManager, 영속성 컨텍스트를 무시한다.")
+  @Test
+  void dirtyReadByBulk() {
+    final List<Account> accounts = entityManager.createQuery("select a from Account a where a.username = :name", Account.class)
+        .setParameter("name", "hotire")
+        .getResultList();
+
+    accounts.forEach(account -> assertThat(account.getAge()).isEqualTo(1));
 
     bulk();
 
-    assertThat(account.getAge()).isEqualTo(1);
+    accounts.forEach(account -> assertThat(account.getAge()).isEqualTo(1));
   }
-
 }
