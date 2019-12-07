@@ -838,3 +838,4 @@ https://jojoldu.tistory.com/165
 
 
 - 벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리한다는 점에 주의해야 한다. 
+  - [dirtyReadByBulk] (https://github.com/hotire/spring-data-jpa/blob/master/src/test/java/com/googlecode/hotire/springdatajpa/AccountTest.java)
