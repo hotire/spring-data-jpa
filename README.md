@@ -833,6 +833,11 @@ https://jojoldu.tistory.com/165
 
 
 
+## Spring Data JPA
+
+### 명세 
+TODO 
+
 ## 기타 
 
 ### 벌크 연산 
