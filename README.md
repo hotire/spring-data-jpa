@@ -363,6 +363,11 @@ JPQL은 SQL과 비슷한 문법을 가진 객체 지향 쿼리입니다.
 - SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다.
 
 
+영속성 컨텍스트에 있는 데이터를 고려하지 않고 데이터베이스에서 데이터를 조회하기 떄문에 
+
+항상 JPQL을 실행하기 전에 영속성 컨텍스트의 내용을 데이터베이스에 반영해야 한다. 
+
+
 ### 문법
 
 ```
@@ -841,3 +846,13 @@ https://jojoldu.tistory.com/165
 
 - 벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리한다는 점에 주의해야 한다. 
   - [dirtyReadByBulk](https://github.com/hotire/spring-data-jpa/blob/master/src/test/java/com/googlecode/hotire/springdatajpa/AccountTest.java)
+
+
+### Find vs JPQL 
+
+entityManager.find() 메서드는 엔티티를 영속성 컨텍스트에서 먼저 찾고 없으면 데이터베이스에서 찾는다.(1차 캐시)
+
+따라서 성능상 이점이 있다. 반면 JPQL은 항상 데이터베이스에서 SQL을 실행해서 결과를 조회한다. 
+
+그 후 영속성 컨텍스트에 이미 존재한다면 보관하고 있던 엔티티를 반환한다. 
+
