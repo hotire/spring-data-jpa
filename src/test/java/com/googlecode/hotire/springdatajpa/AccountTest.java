@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,5 +96,14 @@ class AccountTest {
     bulk();
 
     accounts.forEach(account -> assertThat(account.getAge()).isEqualTo(1));
+  }
+
+  @Test
+  void nativeQuery() {
+    final String sql = "SELECT ID, USERNAME, PASSWORD, AGE, HOME_CITY, HOME_STATE, OFFICE_CITY, OFFICE_STATE FROM Account";
+
+    final Query nativeQuery = entityManager.createNativeQuery(sql, Account.class);
+
+    final List<Account> accounts = nativeQuery.getResultList();
   }
 }
