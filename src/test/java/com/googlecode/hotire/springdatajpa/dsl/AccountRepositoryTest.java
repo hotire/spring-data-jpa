@@ -26,4 +26,5 @@ class AccountRepositoryTest {
     // then
     assertThat(exists).isFalse();
   }
+
 }
