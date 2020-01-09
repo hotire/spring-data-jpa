@@ -6,8 +6,10 @@ import java.util.Set;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-public interface AccountRepository extends JpaRepository<Account, Long>, AccountRepositoryCustom {
+public interface AccountRepository extends JpaRepository<Account, Long>, AccountRepositoryCustom,
+  QuerydslPredicateExecutor {
 
   @Query("select a from Account a join fetch a.studies")
   Set<Account> findAllJoinFetch();

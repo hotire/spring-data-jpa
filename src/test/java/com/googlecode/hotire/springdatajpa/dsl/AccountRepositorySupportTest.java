@@ -1,10 +1,12 @@
 package com.googlecode.hotire.springdatajpa.dsl;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.AccountRepository;
 import java.util.List;
+import java.util.function.Predicate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +34,7 @@ public class AccountRepositorySupportTest {
   public void findByName() {
     // Given
     final String name = "hotire";
-
+    
     // When
     final List<Account> accounts = accountRepository.findByName(name);
 
