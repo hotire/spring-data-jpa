@@ -7,19 +7,20 @@ import org.springframework.context.annotation.Import;
 
 @Import(EntityListener.class)
 @DataJpaTest
-class BookRepositoryTest {
+class ItemRepositoryTest {
 
     @Autowired
-    private BookRepository repository;
+    private ItemRepository repository;
 
     @Test
     void find() {
         // given
-        final Book book = new Book();
+        final Item item = new Shield();
 
         // when
-        repository.save(book.publish());
+        repository.save(item.publish());
 
         // then
     }
+
 }

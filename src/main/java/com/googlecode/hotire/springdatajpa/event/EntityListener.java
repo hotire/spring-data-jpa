@@ -6,10 +6,16 @@ import org.springframework.stereotype.Repository;
 
 @Slf4j
 @Repository
-public class EntityListener{
+public class EntityListener {
 
     @EventListener
     public void consume(EntityEvent entityEvent) {
         log.info("event : {}", entityEvent);
     }
+
+    @EventListener
+    public void consume(ItemEvent event) {
+        log.info("event : {}", event);
+    }
+
 }
