@@ -1038,6 +1038,8 @@ JPA 예외는 크게 2가지로 나눌수 있다.
 
 ## DDD 
 
+https://www.baeldung.com/spring-data-ddd
+
 ### Aggregates
 
 ### DomainEvents
