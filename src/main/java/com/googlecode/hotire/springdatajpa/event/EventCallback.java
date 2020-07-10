@@ -6,7 +6,6 @@ import java.util.function.Consumer;
 
 @Builder
 public class EventCallback<T> {
-    private final T target;
     @Builder.Default private final Consumer<T> beforeCommit = t -> {};
     @Builder.Default private final Consumer<T> afterCommit = t -> {};
     @Builder.Default private final Consumer<T> afterRollback = t -> {};

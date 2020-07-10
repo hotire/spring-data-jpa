@@ -6,9 +6,10 @@ import org.springframework.context.ApplicationEvent;
 import java.util.function.Consumer;
 
 @Getter
-public class ItemEvent extends ApplicationEvent {
+public class ItemEvent extends ApplicationEvent implements EventCallbackAware<Item> {
     private final Item item;
     private final Consumer<Item> consumer;
+    private EventCallback<Item> eventCallback;
 
     public ItemEvent(final Item item) {
         this(item, it -> {});
@@ -20,4 +21,9 @@ public class ItemEvent extends ApplicationEvent {
         this.consumer = consumer;
     }
 
+    @Override
+    public EventCallbackAware<Item> setCallback(EventCallback<Item> eventCallback) {
+        this.eventCallback = eventCallback;
+        return this;
+    }
 }
