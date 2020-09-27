@@ -1,5 +1,6 @@
 package com.googlecode.hotire.springdatajpa;
 
+import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

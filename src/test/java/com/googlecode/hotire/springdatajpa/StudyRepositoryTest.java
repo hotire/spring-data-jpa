@@ -3,6 +3,8 @@ package com.googlecode.hotire.springdatajpa;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
+
+import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
