@@ -75,6 +75,10 @@
       <artifactId>querydsl-collections</artifactId>
       <version>4.2.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-envers</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
