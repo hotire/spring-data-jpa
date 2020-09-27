@@ -1058,4 +1058,17 @@ JPA 예외는 크게 2가지로 나눌수 있다.
 Hibernate Envers는 컬럼의 생성, 수정, 삭제 변경 이력을 남길 수 있다.
 JPA의 Audit기능과 같이 사용한다. 변경사항을 히스토리로 남기기 때문에 변경 사항 추적할 수 있다.
    
-  
+
+### Rev
+
+수정 번호로 revision pk
+
+### REVTYPE
+
+revision type 생성 수정 삭제가 enum으로 관리되며 숫자로 표시된다.
+
+- 0 : insert
+
+- 1 :  update
+
+- 2 : delete
