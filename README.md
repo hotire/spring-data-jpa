@@ -1059,6 +1059,8 @@ Hibernate Envers는 컬럼의 생성, 수정, 삭제 변경 이력을 남길 수
 JPA의 Audit기능과 같이 사용한다. 변경사항을 히스토리로 남기기 때문에 변경 사항 추적할 수 있다.
    
 
+https://www.baeldung.com/database-auditing-jpa
+
 ### Rev
 
 수정 번호로 revision pk
