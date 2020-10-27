@@ -22,7 +22,7 @@ public class TypeService {
 
     @PostConstruct
     public void init() {
-        typeRepository.saveAll(List.of(Type.builder().name("a").build(), Type.builder().name("b").build()));
+        typeRepository.saveAll(List.of(Type.builder().owner(Owner.builder().name("a").build()).build(), Type.builder().owner(Owner.builder().name("a").build()).build()));
         typeRepository.flush();
     }
 
@@ -32,7 +32,7 @@ public class TypeService {
         Root<Type> root = query.from(Type.class);
 
         final Predicate where = builder.or(types.stream()
-                                                .map(it -> builder.and(builder.equal(root.get("name"), it.getName()), builder.equal(root.get("id"), it.getId())))
+                                                .map(it -> builder.and(builder.equal(root.get("id"), it.getId()), builder.equal(root.get("owner").get("name"), it.getOwner().getName())))
                                                 .toArray(Predicate[]::new));
 
         final TypedQuery<Type> typedQuery = entityManager.createQuery(query.select(root).where(where));
