@@ -8,4 +8,5 @@ import javax.persistence.Id;
 public class Content {
     @Id @GeneratedValue
     private Long id;
+    private String name;
 }
