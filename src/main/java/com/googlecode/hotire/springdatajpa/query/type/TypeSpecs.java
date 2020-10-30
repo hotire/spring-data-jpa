@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum TypeSpecs {
+public enum TypeSpecs implements Specs {
     ID("id"),
     OWNER("owner")
     ;

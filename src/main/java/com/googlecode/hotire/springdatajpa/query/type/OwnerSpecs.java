@@ -5,9 +5,10 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum OwnerSpecs {
+public enum OwnerSpecs implements Specs {
     NAME("name"),
     OWNER_ID("ownerId")
     ;
     private final String property;
 }
+
