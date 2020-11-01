@@ -1,8 +1,8 @@
 package com.googlecode.hotire.springdatajpa.event;
 
-import lombok.Builder;
-
 import java.util.function.Consumer;
+
+import lombok.Builder;
 
 @Builder
 public class EventCallback<T> {

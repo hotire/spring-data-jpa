@@ -1,9 +1,10 @@
 package com.googlecode.hotire.springdatajpa.event;
 
-import lombok.Getter;
+import java.util.function.Consumer;
+
 import org.springframework.context.ApplicationEvent;
 
-import java.util.function.Consumer;
+import lombok.Getter;
 
 @Getter
 public class ItemEvent extends ApplicationEvent implements EventCallbackAware<Item> {

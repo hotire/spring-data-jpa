@@ -1,11 +1,12 @@
 package com.googlecode.hotire.springdatajpa.event;
 
-import lombok.extern.slf4j.Slf4j;
+import static org.springframework.transaction.event.TransactionPhase.AFTER_ROLLBACK;
+
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
 
-import static org.springframework.transaction.event.TransactionPhase.AFTER_ROLLBACK;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component

@@ -2,12 +2,15 @@ package com.googlecode.hotire.springdatajpa.dsl;
 
 import static com.googlecode.hotire.springdatajpa.QAccount.account;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
 import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.QAccount;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.util.List;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 /**
  * https://jojoldu.tistory.com/372

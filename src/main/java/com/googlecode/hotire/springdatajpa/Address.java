@@ -1,7 +1,7 @@
 package com.googlecode.hotire.springdatajpa;
 
-
 import javax.persistence.Embeddable;
+
 import lombok.NoArgsConstructor;
 
 @Embeddable

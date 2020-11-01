@@ -1,12 +1,13 @@
 package com.googlecode.hotire.springdatajpa.envers;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.hibernate.envers.Audited;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.envers.Audited;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 @Getter

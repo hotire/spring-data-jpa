@@ -1,14 +1,15 @@
 package com.googlecode.hotire.springdatajpa.Item;
 
-import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

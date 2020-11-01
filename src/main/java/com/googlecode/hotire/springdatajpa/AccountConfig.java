@@ -1,9 +1,11 @@
 package com.googlecode.hotire.springdatajpa;
 
-import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Configuration;
+
+import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Configuration

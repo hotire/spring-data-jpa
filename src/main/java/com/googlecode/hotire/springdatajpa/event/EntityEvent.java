@@ -1,8 +1,9 @@
 package com.googlecode.hotire.springdatajpa.event;
 
+import org.springframework.context.ApplicationEvent;
+
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.context.ApplicationEvent;
 
 
 @Builder
