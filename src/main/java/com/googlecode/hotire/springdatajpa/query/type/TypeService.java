@@ -27,9 +27,9 @@ public class TypeService {
     }
 
     public List<Type> findAll(List<Type> types) {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Type> query = builder.createQuery(Type.class);
-        Root<Type> root = query.from(Type.class);
+        final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<Type> query = builder.createQuery(Type.class);
+        final Root<Type> root = query.from(Type.class);
 
         final Predicate where = builder.or(types.stream()
                                                 .map(it -> builder.and(builder.equal(root.get(TypeSpecs.ID.getProperty()), it.getId()), builder.equal(root.get(TypeSpecs.OWNER.getProperty()).get(OwnerSpecs.NAME.getProperty()), it.getOwner().getName())))
