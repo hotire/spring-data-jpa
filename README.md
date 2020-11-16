@@ -1074,3 +1074,11 @@ revision type 생성 수정 삭제가 enum으로 관리되며 숫자로 표시�
 - 1 :  update
 
 - 2 : delete
+
+### Custom Envers
+
+Integer 아니라 Long type을 사용하기 위해선 Custom이 필요하다. 
+
+DefaultRevisionEntity를 사용하지 않고, @RevisionEntity를 생성하면 된다.
+
+https://github.com/hibernate/hibernate-orm/blob/master/hibernate-envers/src/main/java/org/hibernate/envers/DefaultRevisionEntity.java

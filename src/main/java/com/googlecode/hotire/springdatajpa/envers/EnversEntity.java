@@ -9,6 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * https://github.com/hibernate/hibernate-orm/blob/master/hibernate-envers/src/main/java/org/hibernate/envers/DefaultRevisionEntity.java
+ */
 @Entity
 @Getter
 @Setter
