@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.fulltext;
+package com.googlecode.hotire.springdatajpa.dialect.fulltext;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

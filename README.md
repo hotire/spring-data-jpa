@@ -1082,3 +1082,12 @@ Integer 아니라 Long type을 사용하기 위해선 Custom이 필요하다.
 DefaultRevisionEntity를 사용하지 않고, @RevisionEntity를 생성하면 된다.
 
 https://github.com/hibernate/hibernate-orm/blob/master/hibernate-envers/src/main/java/org/hibernate/envers/DefaultRevisionEntity.java
+
+
+## Full-Text
+
+### Custom Dialect
+
+https://055055.tistory.com/83
+
+https://stackoverflow.com/questions/9186845/how-to-use-mysqls-full-text-search-from-jpa
