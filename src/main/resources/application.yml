@@ -1,13 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create
-#    database: h2
     show-sql: true
     properties.hibernate.format_sql: true
+    dialect: org.hibernate.dialect.H2Dialect
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/time?useSSL=false
-#    password: password
-#    username: hotire
-#    type: com.zaxxer.hikari.HikariDataSource
