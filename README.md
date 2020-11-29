@@ -1086,6 +1086,8 @@ https://github.com/hibernate/hibernate-orm/blob/master/hibernate-envers/src/main
 
 ## Full-Text
 
+단어, 구문에 대한 검색으로 한 컬럼안에서 여러 데이터가 존재할 경우 효울적으로 검색할 수 있다. 
+
 ### Custom Dialect
 
 https://055055.tistory.com/83
