@@ -13,4 +13,5 @@ import lombok.Setter;
 public class Article {
     @Id @GeneratedValue
     private Long id;
+    private String name;
 }
