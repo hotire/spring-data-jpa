@@ -1,12 +1,14 @@
 package com.googlecode.hotire.springdatajpa.audit;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -22,8 +24,14 @@ import lombok.experimental.Accessors;
 public class AuditEntity<ID extends Serializable> extends Entity<ID>{
 
     @CreatedDate
-    private LocalDateTime createdDate;
+    private OffsetDateTime createdDate;
 
     @LastModifiedDate
-    private LocalDateTime modifiedDate;
+    private OffsetDateTime modifiedDate;
+
+    @LastModifiedBy
+    private String updatedBy;
+
+    @CreatedBy
+    private String createdBy;
 }

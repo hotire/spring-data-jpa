@@ -25,6 +25,6 @@ class FoodRepositoryTest {
 
         // then
         assertThat(food.getCreatedDate()).isNotNull();
-        assertThat(food.getModifiedDate()).isNotNull()
+        assertThat(food.getModifiedDate()).isNotNull();
     }
 }
