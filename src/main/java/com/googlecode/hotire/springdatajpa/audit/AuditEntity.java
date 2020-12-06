@@ -33,7 +33,7 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID>{
     @CreatedBy
     private String createdBy;
 
-    public AuditEntity setCreatedDate(final OffsetDateTime createdDate) {
+    public AuditEntity<ID> setCreatedDate(final OffsetDateTime createdDate) {
         this.createdDate = createdDate;
         return this;
     }
