@@ -13,11 +13,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Accessors(chain = true)
-@Setter
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -34,4 +32,9 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID>{
 
     @CreatedBy
     private String createdBy;
+
+    public AuditEntity setCreatedDate(final OffsetDateTime createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
 }
