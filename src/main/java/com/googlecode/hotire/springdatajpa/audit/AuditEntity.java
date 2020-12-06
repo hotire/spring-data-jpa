@@ -37,4 +37,11 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID>{
         this.createdDate = createdDate;
         return this;
     }
+
+    public AuditEntity<ID> setModifiedDate(final OffsetDateTime modifiedDate) {
+        this.modifiedDate = modifiedDate;
+        return this;
+    }
+
+
 }
