@@ -43,5 +43,13 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID>{
         return this;
     }
 
+    public AuditEntity<ID> setUpdatedBy(final String updatedBy) {
+        this.updatedBy = updatedBy;
+        return this;
+    }
 
+    public AuditEntity<ID> setCreatedBy(final String createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
 }
