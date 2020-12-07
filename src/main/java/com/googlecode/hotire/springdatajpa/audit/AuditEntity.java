@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class AuditEntity<ID extends Serializable> extends Entity<ID>{
+public class AuditEntity<ID extends Serializable> extends Entity<ID> implements AuditableEntity {
 
     @CreatedDate
     private OffsetDateTime createdDate;
@@ -51,5 +51,10 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID>{
     public AuditEntity<ID> setCreatedBy(final String createdBy) {
         this.createdBy = createdBy;
         return this;
+    }
+
+    @Override
+    public Boolean isAuditable() {
+        return true;
     }
 }
