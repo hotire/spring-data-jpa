@@ -14,12 +14,16 @@ public class CustomAuditingEntityListener {
 
     @PrePersist
     public void touchForCreate(Object target) {
-        delegate.touchForCreate(target);
+        if (AuditableEntity.isAuditable(target)) {
+            delegate.touchForCreate(target);
+        }
     }
 
     @PreUpdate
     public void touchForUpdate(Object target) {
-        delegate.touchForUpdate(target);
+        if (AuditableEntity.isAuditable(target)) {
+            delegate.touchForUpdate(target);
+        }
     }
 
 }
