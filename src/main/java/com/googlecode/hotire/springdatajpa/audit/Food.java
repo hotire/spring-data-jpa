@@ -17,7 +17,7 @@ public class Food extends AuditEntity<Long> {
     private String legacyId;
 
     @Override
-    public Boolean isAuditable() {
+    public boolean isAuditable() {
         return Strings.isNotEmpty(legacyId);
     }
 }

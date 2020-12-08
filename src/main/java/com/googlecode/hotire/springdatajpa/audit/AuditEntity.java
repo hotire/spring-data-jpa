@@ -53,7 +53,7 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID> implements 
     }
 
     @Override
-    public Boolean isAuditable() {
+    public boolean isAuditable() {
         return true;
     }
 }
