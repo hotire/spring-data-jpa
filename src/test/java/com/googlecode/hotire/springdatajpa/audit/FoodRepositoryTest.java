@@ -27,4 +27,15 @@ class FoodRepositoryTest {
         assertThat(food.getCreatedDate()).isNotNull();
         assertThat(food.getModifiedDate()).isNotNull();
     }
+
+    @Test
+    void notAudit() {
+        // when
+        final Food food = foodRepository.saveAndFlush(new Food().setName("pasta")
+                                                                .setLegacyId("123"));
+
+        // then
+        assertThat(food.getCreatedDate()).isNull();
+        assertThat(food.getModifiedDate()).isNull();
+    }
 }
