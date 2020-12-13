@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.audit;
+package com.googlecode.hotire.springdatajpa;
 
 import java.io.Serializable;
 
