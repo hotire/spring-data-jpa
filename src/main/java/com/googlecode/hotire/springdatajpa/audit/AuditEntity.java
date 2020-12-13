@@ -24,9 +24,10 @@ public class AuditEntity<ID extends Serializable> extends Entity<ID> implements 
 
     @CreatedDate
     private OffsetDateTime createdDate;
-
     @LastModifiedDate
     private OffsetDateTime modifiedDate;
+
+    private OffsetDateTime remoteDate;
 
     @LastModifiedBy
     private String updatedBy;
