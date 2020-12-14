@@ -19,4 +19,17 @@ class FoodTest {
         // then
         assertThat(result).isEqualTo(true);
     }
+
+    @Test
+    void getName() {
+        // given
+        final String name = "hello";
+        final Food food = new Food().setName(name);
+
+        // when
+        final String result = food.getName();
+
+        // then
+        assertThat(result).isEqualTo(name);
+    }
 }
