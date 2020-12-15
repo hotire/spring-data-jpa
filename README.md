@@ -1083,6 +1083,11 @@ DefaultRevisionEntity를 사용하지 않고, @RevisionEntity를 생성하면 �
 
 https://github.com/hibernate/hibernate-orm/blob/master/hibernate-envers/src/main/java/org/hibernate/envers/DefaultRevisionEntity.java
 
+## Audit 
+
+### Spring JPA Audit의 내부 속으로 -1 (EnableJpaAuditing 동작 원리)
+https://blog.naver.com/gngh0101/222164173922
+
 
 ## Custom Dialect
 

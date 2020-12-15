@@ -32,4 +32,4 @@ class FoodTest {
         // then
         assertThat(result).isEqualTo(name);
     }
-}
+} ㅕㄷㄱ
