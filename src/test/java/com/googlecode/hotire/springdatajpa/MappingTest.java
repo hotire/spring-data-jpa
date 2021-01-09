@@ -2,6 +2,7 @@ package com.googlecode.hotire.springdatajpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.hibernate.Session;
 import org.junit.Test;
 import org.junit.runner.RunWith;

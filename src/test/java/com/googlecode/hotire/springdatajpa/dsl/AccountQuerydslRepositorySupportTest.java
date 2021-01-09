@@ -2,15 +2,17 @@ package com.googlecode.hotire.springdatajpa.dsl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.googlecode.hotire.springdatajpa.Account;
-import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.googlecode.hotire.springdatajpa.Account;
+import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

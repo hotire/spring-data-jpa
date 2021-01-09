@@ -1,8 +1,7 @@
 package com.googlecode.hotire.springdatajpa.criteria;
 
-
-import com.googlecode.hotire.springdatajpa.Account;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,11 +11,14 @@ import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.googlecode.hotire.springdatajpa.Account;
 
 /**
  *  학습 테스트

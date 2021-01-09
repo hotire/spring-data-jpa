@@ -1,10 +1,7 @@
 package com.googlecode.hotire.springdatajpa.dsl;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 
-import com.googlecode.hotire.springdatajpa.Account;
-import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import java.util.List;
 
 import org.junit.Before;
@@ -13,6 +10,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.googlecode.hotire.springdatajpa.Account;
+import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 
 @RunWith(SpringRunner.class)
