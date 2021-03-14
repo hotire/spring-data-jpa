@@ -1107,3 +1107,9 @@ https://stackoverflow.com/questions/9186845/how-to-use-mysqls-full-text-search-f
 검색 문자열을 단어 단위로 분리한 후, 해당 단어가 포함되는 행을 찾는 규칙을 추가적으로 적용하여 해당 규칙에 매칭되는 행을 찾는다.
 - 쿼리 확장 검색(query extension search)
 2단계에 걸쳐서 검색을 수행한다. 첫 단계에서는 자연어 검색을 수행한 후, 첫 번째 검색의 결과에 매칭된 행을 기반으로 검색 문자열을 재구성하여 두 번째 검색을 수행한다. 이는 1단계 검색에서 사용한 단어와 연관성이 있는 단어가 1단계 검색에 매칭된 결과에 나타난다는 가정을 전제로 한다.
+
+
+## TODO
+
+- Converter 동작과정 
+https://namocom.tistory.com/892

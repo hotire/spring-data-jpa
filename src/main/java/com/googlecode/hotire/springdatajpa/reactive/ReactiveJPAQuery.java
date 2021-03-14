@@ -25,36 +25,42 @@ public class ReactiveJPAQuery<T> extends JPAQuery<T> implements ReactiveFetchabl
     @Override
     public Mono<List<T>> fetchRx() {
         return Mono.<List<T>>create(sink -> sink.success(fetch()))
+                .publishOn(Schedulers.parallel())
                 .subscribeOn(scheduler);
     }
 
     @Override
     public Mono<T> fetchFirstRx() {
         return Mono.<T>create(sink -> sink.success(fetchFirst()))
+                .publishOn(Schedulers.parallel())
                 .subscribeOn(scheduler);
     }
 
     @Override
     public Mono<T> fetchOneRx() throws NonUniqueResultException {
         return Mono.<T>create(sink -> sink.success(fetchOne()))
+                .publishOn(Schedulers.parallel())
                 .subscribeOn(scheduler);
     }
 
     @Override
     public Mono<CloseableIterator<T>> iterateRx() {
         return Mono.<CloseableIterator<T>>create(sink -> sink.success(iterate()))
+                .publishOn(Schedulers.parallel())
                 .subscribeOn(scheduler);
     }
 
     @Override
     public Mono<QueryResults<T>> fetchResultsRx() {
         return Mono.<QueryResults<T>>create(sink -> sink.success(fetchResults()))
+                .publishOn(Schedulers.parallel())
                 .subscribeOn(scheduler);
     }
 
     @Override
     public Mono<Long> fetchCountRx() {
         return Mono.<Long>create(sink -> sink.success(fetchCount()))
+                .publishOn(Schedulers.parallel())
                 .subscribeOn(scheduler);
     }
 }
