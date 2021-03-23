@@ -22,8 +22,8 @@ public class TypeService {
 
     @PostConstruct
     public void init() {
-        typeRepository.saveAll(List.of(Type.builder().owner(Owner.builder().name("a").build()).build(), Type.builder().owner(Owner.builder().name("a").build()).build()));
-        typeRepository.flush();
+//        typeRepository.saveAll(List.of(Type.builder().owner(Owner.builder().name("a").build()).build(), Type.builder().owner(Owner.builder().name("a").build()).build()));
+//        typeRepository.flush();
     }
 
     public List<Type> findAll(List<Type> types) {

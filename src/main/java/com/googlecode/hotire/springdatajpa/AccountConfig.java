@@ -17,6 +17,6 @@ public class AccountConfig implements InitializingBean {
     Account account = new Account();
     account.setUsername("hello");
     account.setPassword("1234");
-    accountRepository.save(account);
+//    accountRepository.save(account);
   }
 }

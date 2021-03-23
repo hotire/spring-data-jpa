@@ -15,7 +15,7 @@ public class EnversEntityService {
 
     @PostConstruct
     public void init() {
-        enversEntityRepository.save(new EnversEntity());
+//        enversEntityRepository.save(new EnversEntity());
     }
 
 }
