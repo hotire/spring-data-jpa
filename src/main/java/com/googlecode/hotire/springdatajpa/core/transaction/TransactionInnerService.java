@@ -11,10 +11,8 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 public class TransactionInnerService {
-    private final TransactionRepository transactionRepository;
-
     public void service(Runnable runnable) {
-        runnable.run();;
+        runnable.run();
     }
 
     public void service(final Transaction transaction, final Consumer<Transaction> consumer) {
