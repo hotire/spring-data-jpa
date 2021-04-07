@@ -18,11 +18,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 @ToString
 @Setter
 @Getter
 @Entity
+@Accessors(chain = true)
 @NoArgsConstructor
 public class Account {
 
