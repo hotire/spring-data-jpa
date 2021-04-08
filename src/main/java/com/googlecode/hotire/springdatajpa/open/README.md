@@ -20,6 +20,10 @@ Transaction이 종료될 때 데이터 저장소에 동기화(flushing)됩니다
 
 
 ### Open Session In View Pattern 
+
+뷰 렌더링 시점에 영속성 컨텍스트가 존재하지 않기 때문에 Detached 객체의 프록시를 초기화할 수 없다면 영속성 컨텍스트를 오픈된 채로 뷰 렌더링 시점까지 유지하자는 것 입니다. 
+즉, 작업 단위를 요청 시작 시점부터 뷰 렌더링 완료 시점까지로 확장하는 것 입니다.
+
 사용자 화면을 구성하는 사용자 인터페이스 레이어(User Interface Layer), 
 애플리케이션의 제어 흐름을 관리하는 애플리케이션 레이어(Application Layer), 도메인의 핵심 로직을 포함하는 도메인 레이어(Domain Layer), 
 상위 계층을 지원하기 위한 인프라스트럭처 레이어(Infrastructure Layer)
@@ -48,8 +52,11 @@ Transaction이 종료될 때 데이터 저장소에 동기화(flushing)됩니다
 - POJO FACADE
 애플리케이션 레이어 안에서 새로운 객체를 통해 프록시를 초기화한 후 사용자 인터페이스로 반한하는 방법입니다.
 
-
  
+### FlushMode
+
+// TODO
+
 
 
 ### Entity Status
