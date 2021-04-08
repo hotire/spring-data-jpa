@@ -18,6 +18,40 @@ Transaction이 종료될 때 데이터 저장소에 동기화(flushing)됩니다
 
 - EntityManager의 Life-Cycle 은  Transaction과 함께한다.
 
+
+### Open Session In View Pattern 
+사용자 화면을 구성하는 사용자 인터페이스 레이어(User Interface Layer), 
+애플리케이션의 제어 흐름을 관리하는 애플리케이션 레이어(Application Layer), 도메인의 핵심 로직을 포함하는 도메인 레이어(Domain Layer), 
+상위 계층을 지원하기 위한 인프라스트럭처 레이어(Infrastructure Layer)
+
+- User Inteface Layer는 Paresentiation Layer
+  
+- Application Layer는 Service Layer
+  
+- Infrastructure Layer는 Persistence Layer(Data access Layer)
+ 
+ 
+레이어 분리 원칙
+ 
+1. 모델-뷰 분리(Model-View Separation)[Fowler PEAA, Larman AUP]
+ 
+2. 깔끔하고 얇은 뷰(Clean and Thin View)[Johnson J2EEDD]
+ 
+3. 영속성 분리(PI, Persistence Ignorance)[Nilsson ADDD]
+ 
+4. 도메인 레이어 고립(Domain Layer Isolation)[Evans DDD]
+
+서비스 레이어는 트랜잭션 경계를 정의하는 역할이라 이로 인해 Open Session In View Pattern 등장.
+
+- 뷰 렌더링에 필요한 데이터 모두 로드
+뷰에서 필요로 하는 모든 연관 관계의 객체를 `EAGER Fetch`로 설정하거나, Join 쿼리를 작성하는 방법입니다.
+- POJO FACADE
+애플리케이션 레이어 안에서 새로운 객체를 통해 프록시를 초기화한 후 사용자 인터페이스로 반한하는 방법입니다.
+
+
+ 
+
+
 ### Entity Status
 
 - Persistence
@@ -40,6 +74,15 @@ new 연산자를 사용하여 생성한 객체는 곧바로 Persistence 상태�
 
 Transaction이 종료되는 시점에 삭제될 객체는 Removed 상태를 갖습니다.
 
+
+### 지연 로딩
+
+- 페치 전략 : 쿼리 수행과 관련된 객체와 연관 관계를 맺고 있는 객체나 컬렉션 을 어느 시점에서 가져올지에 대한 전략 입니다. 
+
+즉 데이터베이스에서 데이터를 가져 오는 전략을 정의합니다.
+
+- 프록시 : 지연 페치 전략에 따라 연관 관계를 맺고 있는 객체와 컬렉션에는 실제 ENTITY 대신 실제 객체처럼 위장한 프록시(Proxy) 객체가 생성됩니다.
+   
 
 ### OpenEntityManagerInViewInterceptor
 
