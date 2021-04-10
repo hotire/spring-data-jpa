@@ -51,14 +51,7 @@ Transaction이 종료될 때 데이터 저장소에 동기화(flushing)됩니다
 뷰에서 필요로 하는 모든 연관 관계의 객체를 `EAGER Fetch`로 설정하거나, Join 쿼리를 작성하는 방법입니다.
 - POJO FACADE
 애플리케이션 레이어 안에서 새로운 객체를 통해 프록시를 초기화한 후 사용자 인터페이스로 반한하는 방법입니다.
-
- 
-### FlushMode
-
-// TODO
-
-
-
+    
 ### Entity Status
 
 - Persistence
