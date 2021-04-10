@@ -18,9 +18,9 @@ public class OpenEntityManagerAspect extends EntityManagerFactoryAccessor {
 
     @Around("@annotation(openEntityManager)")
     public void execute(final ProceedingJoinPoint joinPoint, final OpenEntityManager openEntityManager) throws Throwable {
-        EntityManagerFactory emf = obtainEntityManagerFactory();
-        EntityManager em = createEntityManager();
-        EntityManagerHolder emHolder = new EntityManagerHolder(em);
+        final EntityManagerFactory emf = obtainEntityManagerFactory();
+        final EntityManager em = createEntityManager();
+        final EntityManagerHolder emHolder = new EntityManagerHolder(em);
         TransactionSynchronizationManager.bindResource(emf, emHolder);
         try {
             joinPoint.proceed();
