@@ -71,6 +71,8 @@ class FlushEntityTest {
             final Session session = entityManager.unwrap(Session.class);
             session.setFlushMode(FlushMode.MANUAL);
             session.save(flushEntity);
+            session.createQuery("select f from FlushEntity f", FlushEntity.class)
+                   .getResultList();
         }
     }
 
