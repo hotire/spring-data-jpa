@@ -32,6 +32,7 @@ class FlushEntityTest {
     }
 
     @Test
+//    @Rollback(value = false)  // -> if Rollback is activated, insert query occurs
     @Transactional
     void commit() {
         final FlushEntity flushEntity = new FlushEntity();
