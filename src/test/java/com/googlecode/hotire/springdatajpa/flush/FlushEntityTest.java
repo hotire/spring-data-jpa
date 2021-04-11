@@ -8,6 +8,7 @@ import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -40,9 +41,21 @@ class FlushEntityTest {
         // Flushing to occur at transaction commit
     }
 
-    @Test
-    void manual() {
-        final Session session = entityManager.unwrap(Session.class);
-        session.setFlushMode(FlushMode.MANUAL);
+    @SpringBootTest
+    static class FlushEntitySessionTest {
+
+        @PersistenceContext
+        private EntityManager entityManager;
+
+        @Test
+        @Rollback(value = false)
+        @Transactional
+        void manual() {
+            final FlushEntity flushEntity = new FlushEntity();
+            final Session session = entityManager.unwrap(Session.class);
+            session.setFlushMode(FlushMode.MANUAL);
+            session.save(flushEntity);
+        }
     }
+
 }
