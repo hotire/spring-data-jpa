@@ -20,6 +20,12 @@ class FlushEntityTest {
     /**
      * No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call;
      * nested exception is javax.persistence.TransactionRequiredException:
+     *
+     * SharedEntityManagerCreator
+     * else if (transactionRequiringMethods.contains(method.getName())) {
+     *   ... throw TransactionRequiredException..
+     *  }
+     *
      */
     @Test
     @Transactional
