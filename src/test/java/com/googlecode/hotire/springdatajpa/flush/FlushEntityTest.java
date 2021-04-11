@@ -20,13 +20,6 @@ class FlushEntityTest {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-    @Test
-    void transactionRequiredException() {
-        final FlushEntity flushEntity = new FlushEntity();
-        assertThatThrownBy(() -> entityManager.persist(flushEntity)).isInstanceOf(TransactionRequiredException.class);
-    }
-
     /**
      * No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call;
      * nested exception is javax.persistence.TransactionRequiredException:
@@ -37,6 +30,12 @@ class FlushEntityTest {
      *  }
      *
      */
+    @Test
+    void transactionRequiredException() {
+        final FlushEntity flushEntity = new FlushEntity();
+        assertThatThrownBy(() -> entityManager.persist(flushEntity)).isInstanceOf(TransactionRequiredException.class);
+    }
+
     @Test
     @Transactional
     void auto() {
