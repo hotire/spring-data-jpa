@@ -1,8 +1,11 @@
 package com.googlecode.hotire.springdatajpa.flush;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import javax.persistence.EntityManager;
 import javax.persistence.FlushModeType;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TransactionRequiredException;
 
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
@@ -16,6 +19,13 @@ class FlushEntityTest {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+
+    @Test
+    void transactionRequiredException() {
+        final FlushEntity flushEntity = new FlushEntity();
+        assertThatThrownBy(() -> entityManager.persist(flushEntity)).isInstanceOf(TransactionRequiredException.class);
+    }
 
     /**
      * No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call;
