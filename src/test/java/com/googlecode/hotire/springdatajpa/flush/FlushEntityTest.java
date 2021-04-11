@@ -26,6 +26,7 @@ class FlushEntityTest {
         final FlushEntity flushEntity = new FlushEntity();
         entityManager.setFlushMode(FlushModeType.AUTO);
         entityManager.persist(flushEntity);
+        // Flushing to occur at query execution
         entityManager.createQuery("select f from FlushEntity f", FlushEntity.class).getResultList();
     }
 
