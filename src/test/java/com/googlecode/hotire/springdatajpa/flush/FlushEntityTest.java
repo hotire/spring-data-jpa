@@ -31,6 +31,16 @@ class FlushEntityTest {
     }
 
     @Test
+    @Transactional
+    void commit() {
+        final FlushEntity flushEntity = new FlushEntity();
+        entityManager.setFlushMode(FlushModeType.COMMIT);
+        entityManager.persist(flushEntity);
+        entityManager.createQuery("select f from FlushEntity f", FlushEntity.class).getResultList();
+        // Flushing to occur at transaction commit
+    }
+
+    @Test
     void manual() {
         final Session session = entityManager.unwrap(Session.class);
         session.setFlushMode(FlushMode.MANUAL);
