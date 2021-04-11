@@ -96,7 +96,28 @@ asyncManager.registerCallableInterceptor(key, interceptor);
 asyncManager.registerDeferredResultInterceptor(key, interceptor);
 ~~~
 
+bindResource 메서드를 통해 스레드 로컬에 EntityManager을 넣어둔다.
 
+SharedEntityManagerCreator
+~~~java
+EntityManager target = EntityManagerFactoryUtils.doGetTransactionalEntityManager(
+					this.targetFactory, this.properties, this.synchronizedWithTransaction);
+~~~
+
+EntityManagerFactoryUtils
+~~~java
+	@Nullable
+	public static EntityManager doGetTransactionalEntityManager(
+			EntityManagerFactory emf, @Nullable Map<?, ?> properties, boolean synchronizedWithTransaction)
+			throws PersistenceException {
+
+		Assert.notNull(emf, "No EntityManagerFactory specified");
+
+		EntityManagerHolder emHolder =
+				(EntityManagerHolder) TransactionSynchronizationManager.getResource(emf);
+~~~
+
+스레드로컬, resource로 부터 entityManager를 얻어온다.
 
 ### References
 - https://kingbbode.tistory.com/27
