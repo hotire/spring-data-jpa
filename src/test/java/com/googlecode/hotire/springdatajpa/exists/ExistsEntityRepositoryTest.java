@@ -25,4 +25,18 @@ class ExistsEntityRepositoryTest {
         // then
         assertThat(result).isTrue();
     }
+
+    @Test
+    void existsByQuery() {
+        // given
+        final ExistsEntity entity = new ExistsEntity();
+        entity.setName("hotire");
+        existsEntityRepository.saveAndFlush(entity);
+
+        // when
+        final Boolean result = existsEntityRepository.existsByQuery(entity.getName());
+
+        // then
+        assertThat(result).isTrue();
+    }
 }
