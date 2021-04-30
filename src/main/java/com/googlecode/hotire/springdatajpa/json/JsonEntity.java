@@ -2,7 +2,6 @@ package com.googlecode.hotire.springdatajpa.json;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

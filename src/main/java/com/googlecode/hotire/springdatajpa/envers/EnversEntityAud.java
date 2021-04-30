@@ -1,9 +1,6 @@
 package com.googlecode.hotire.springdatajpa.envers;
 
 import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-
-import lombok.Data;
 
 //@Data
 //@Entity

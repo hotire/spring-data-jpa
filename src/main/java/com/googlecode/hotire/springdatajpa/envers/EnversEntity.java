@@ -1,7 +1,6 @@
 package com.googlecode.hotire.springdatajpa.envers;
 
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
 
 import java.util.List;
 

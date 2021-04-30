@@ -2,8 +2,6 @@ package com.googlecode.hotire.springdatajpa.envers;
 
 import java.util.List;
 
-import javax.persistence.Id;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
