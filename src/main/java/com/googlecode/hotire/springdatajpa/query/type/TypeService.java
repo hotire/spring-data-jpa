@@ -26,6 +26,9 @@ public class TypeService {
 //        typeRepository.flush();
     }
 
+    /**
+     * criteriaBuilder
+     */
     public List<Type> findAll(List<Type> types) {
         final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Type> query = builder.createQuery(Type.class);
