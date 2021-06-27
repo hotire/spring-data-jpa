@@ -10,6 +10,9 @@ import com.googlecode.hotire.springdatajpa.utils.ThreadUtils;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * http://ladm-ci-real.line-apps-dev.com:8080/jenkins/login?from=%2Fjenkins%2Fview%2FLADM-BATCH-STAGE%2F
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional(isolation = Isolation.REPEATABLE_READ)
