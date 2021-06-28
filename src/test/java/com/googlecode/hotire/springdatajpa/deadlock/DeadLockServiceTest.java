@@ -28,6 +28,8 @@ class DeadLockServiceTest {
     @PostConstruct
     public void init() {
         deadLock = deadLockService.saveAndFlush(new DeadLock());
+        deadLockService.saveAndFlush(new DeadLock());
+        deadLockService.saveAndFlush(new DeadLock());
     }
 
 
@@ -48,5 +50,23 @@ class DeadLockServiceTest {
             .subscribe(System.out::println);
 
         ThreadUtils.sleep(5000L);
+    }
+
+    @Test
+    void pessimisticLockingFailureException() {
+        Mono.create(sink -> { sink.success(deadLockService.updateAll("1")); })
+            .subscribeOn(Schedulers.elastic())
+            .log()
+            .subscribe(System.out::println);
+
+        ThreadUtils.sleep(1000L);
+        deadLock.setName("hello");
+
+        Mono.create(sink -> { sink.success(deadLockService.saveAndFlush(deadLock)); })
+            .subscribeOn(Schedulers.elastic())
+            .log()
+            .subscribe(System.out::println);
+
+        ThreadUtils.sleep(4000L);
     }
 }

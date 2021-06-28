@@ -14,12 +14,12 @@ import lombok.experimental.Accessors;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Child {
+public class DeadLockChild {
     @Id
     private Long id;
 
     private Integer age;
 
     @ManyToOne
-    private Parent parent;
+    private DeadLockParent deadLockParent;
 }

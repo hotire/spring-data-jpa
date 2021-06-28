@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Parent {
+public class DeadLockParent {
     @Id
     private Long id;
     private Integer age;

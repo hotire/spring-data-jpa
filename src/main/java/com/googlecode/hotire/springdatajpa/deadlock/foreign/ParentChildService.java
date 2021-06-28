@@ -22,16 +22,16 @@ public class ParentChildService {
 
     @PostConstruct
     public void init() {
-        final Parent parent = new Parent(1L, 50);
-        final Parent parent2 = new Parent(2L, 60);
-        parentRepository.saveAndFlush(parent);
-        parentRepository.saveAndFlush(parent2);
+        final DeadLockParent deadLockParent = new DeadLockParent(1L, 50);
+        final DeadLockParent deadLockParent2 = new DeadLockParent(2L, 60);
+        parentRepository.saveAndFlush(deadLockParent);
+        parentRepository.saveAndFlush(deadLockParent2);
 
-        final Child child = new Child(1L, 20, parent);
-        final Child child2 = new Child(2L, 21, parent2);
+        final DeadLockChild deadLockChild = new DeadLockChild(1L, 20, deadLockParent);
+        final DeadLockChild deadLockChild2 = new DeadLockChild(2L, 21, deadLockParent2);
 
-        childRepository.saveAndFlush(child);
-        childRepository.saveAndFlush(child2);
+        childRepository.saveAndFlush(deadLockChild);
+        childRepository.saveAndFlush(deadLockChild2);
     }
 
     public void save(final Long parentId, final Integer age) {
