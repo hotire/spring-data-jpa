@@ -27,20 +27,20 @@ public class TypeService {
         typeRepository.flush();
     }
 
-    public List<Type> findByOwnerName(String ownerName) {
-        TypedQuery<Type> query = entityManager.createQuery(
+    public List<Type> findByOwnerName(final String ownerName) {
+        final TypedQuery<Type> query = entityManager.createQuery(
                 "SELECT t FROM Type t WHERE t.owner.name = '" + ownerName + "'", Type.class);
         return query.getResultList();
     }
 
-    public List<Type> findByOwnerNameWithPrepared(String ownerName) {
-        TypedQuery<Type> query = entityManager.createQuery(
+    public List<Type> findByOwnerNameWithPrepared(final String ownerName) {
+        final TypedQuery<Type> query = entityManager.createQuery(
                 "SELECT t FROM Type t WHERE t.owner.name = ?1", Type.class);
         query.setParameter(1, ownerName);
         return query.getResultList();
     }
 
-    public List<Type> findByOwnerNameAndIdByCb(Long id, String ownerName) {
+    public List<Type> findByOwnerNameAndIdByCb(final Long id, final String ownerName) {
         final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Type> query = builder.createQuery(Type.class);
         final Root<Type> root = query.from(Type.class);
@@ -51,16 +51,16 @@ public class TypeService {
                 )
         ));
 
-        TypedQuery<Type> typedQuery = entityManager.createQuery(query);
+        final TypedQuery<Type> typedQuery = entityManager.createQuery(query);
         return typedQuery.getResultList();
     }
 
-    public List<Type> findByOwnerNameAndIdByCbWithParam(Long id, String ownerName) {
+    public List<Type> findByOwnerNameAndIdByCbWithParam(final Long id, final String ownerName) {
         final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Type> query = builder.createQuery(Type.class);
         final Root<Type> root = query.from(Type.class);
-        ParameterExpression<String> paramOwner = builder.parameter(String.class);
-        ParameterExpression<Long> paramId = builder.parameter(Long.class);
+        final ParameterExpression<String> paramOwner = builder.parameter(String.class);
+        final ParameterExpression<Long> paramId = builder.parameter(Long.class);
         query.select(root).where(
                 builder.and(
                         builder.equal(root.get(TypeSpecs.ID.getProperty()), paramId),
@@ -69,7 +69,7 @@ public class TypeService {
                 )
         );
 
-        TypedQuery<Type> typedQuery = entityManager.createQuery(query);
+        final TypedQuery<Type> typedQuery = entityManager.createQuery(query);
         typedQuery.setParameter(paramId, id);
         typedQuery.setParameter(paramOwner, ownerName);
         return typedQuery.getResultList();
@@ -79,7 +79,7 @@ public class TypeService {
     /**
      * criteriaBuilder
      */
-    public List<Type> findAll(List<Type> types) {
+    public List<Type> findAll(final List<Type> types) {
         final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Type> query = builder.createQuery(Type.class);
         final Root<Type> root = query.from(Type.class);
