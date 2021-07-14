@@ -25,11 +25,7 @@ public class DeadLock {
     private Long id;
     private String name;
 
-//    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
-//    @JoinColumn(name="result_id", nullable = true)
-//    @ForeignKey(name = "fk_parent_child_id")
     @OneToOne(fetch = FetchType.LAZY, optional = true, cascade=CascadeType.ALL)
-//    @LazyToOne(value = LazyToOneOption.NO_PROXY) -> http://wonwoo.ml/index.php/post/1566
     private DeadLockResult result;
 
     public DeadLockResult getResult() {
