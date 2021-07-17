@@ -19,7 +19,7 @@ public class DeadLockIndexService {
 
     private final ApplicationContext context;
 
-    public void saveAndRollback(final DeadLockIndex deadLockIndex) {
+    public DeadLockIndex saveAndRollback(final DeadLockIndex deadLockIndex) {
         try {
             context.getBean(DeadLockIndexService.class).save(deadLockIndex, it -> {
                 ThreadUtils.sleep(3000);
@@ -28,6 +28,7 @@ public class DeadLockIndexService {
         } catch (final Exception e) {
             log.error(e.getMessage(), e);
         }
+        return deadLockIndex;
     }
 
     @Transactional
