@@ -11,14 +11,17 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 @RequiredArgsConstructor
 public class TransactionOuterService {
-    private final TransactionInnerService transactionInnerService;
     private final TransactionRepository transactionRepository;
+
+    private final TransactionProxyService transactionProxyService;
 
     public void service() {
         try {
-            transactionRepository.save(new Transaction());
-            transactionInnerService.service(RuntimeException::new);
-        } catch (RuntimeException e) {
+            transactionProxyService.run(() -> {
+                transactionRepository.save(new Transaction());
+                throw new RuntimeException("rollback");
+            });
+        } catch (final RuntimeException e) {
             log.error(e.getMessage(), e);
         }
     }
