@@ -23,7 +23,48 @@ factory.addAdvice(transactionInterceptor);
 
 ### JpaRepositoriesAutoConfiguration
 
-### JpaRepositoriesRegistrar
+### JpaRepositoriesRegistrar extends AbstractRepositoryConfigurationSourceSupport
+
+### AutoConfiguredAnnotationRepositoryConfigurationSource
+
+- getBasePackages()
 
 ### RepositoryConfigurationDelegate
+
+- registerRepositoriesIn -> definitions
+
+### RepositoryBeanDefinitionBuilder
+
+- build() -> configuration.getRepositoryFactoryBeanClassName())
+
+### DefaultRepositoryConfiguration
+
+- getRepositoryFactoryBeanClassName
+
+### JpaRepositoryConfigExtension extends RepositoryConfigurationExtension
+
+- getRepositoryFactoryBeanClassName -> JpaRepositoryFactoryBean.class.getName()
+
+- EnableJpaRepositories -> Import(JpaRepositoriesRegistrar)
+
+### JpaRepositoryFactoryBean extends TransactionalRepositoryFactoryBeanSupport
+
+### TransactionalRepositoryFactoryBeanSupport extends RepositoryFactoryBeanSupport
+
+- RepositoryFactoryBeanSupport.afterPropertiesSet()
+
+
+## EntityManager
+
+
+
+
+
+
+
+
+
+
+
+
 
