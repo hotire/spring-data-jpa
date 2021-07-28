@@ -56,6 +56,12 @@ factory.addAdvice(transactionInterceptor);
 
 ## EntityManager
 
+- SessionImpl
+
+
+### EntityManagerFactory
+
+- SessionFactoryImpl
 
 
 
