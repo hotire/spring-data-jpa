@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.googlecode.hotire.springdatajpa.Account;
+import com.googlecode.hotire.springdatajpa.ex.Account;
 import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 @RunWith(SpringRunner.class)
@@ -35,7 +35,7 @@ public class AccountQuerydslRepositorySupportTest {
   @Test
   public void findByName() {
     // When
-    List<Account> accounts =  accountQuerydslRepositorySupport.findByName("hotire");
+    final List<Account> accounts =  accountQuerydslRepositorySupport.findByName("hotire");
 
     // Then
     assertThat(accounts.size()).isEqualTo(2);

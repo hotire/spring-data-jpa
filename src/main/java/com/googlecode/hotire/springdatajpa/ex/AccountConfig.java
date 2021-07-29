@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa;
+package com.googlecode.hotire.springdatajpa.ex;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class AccountConfig implements InitializingBean {
 
   @Override
   public void afterPropertiesSet() throws Exception {
-    Account account = new Account();
+    final Account account = new Account();
     account.setUsername("hello");
     account.setPassword("1234");
 //    accountRepository.save(account);

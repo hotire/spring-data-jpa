@@ -4,8 +4,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
-import com.googlecode.hotire.springdatajpa.Account;
-import com.googlecode.hotire.springdatajpa.AccountService;
+import com.googlecode.hotire.springdatajpa.ex.Account;
+import com.googlecode.hotire.springdatajpa.ex.AccountService;
 import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 import lombok.RequiredArgsConstructor;

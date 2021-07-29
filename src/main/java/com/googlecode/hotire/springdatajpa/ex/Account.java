@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa;
+package com.googlecode.hotire.springdatajpa.ex;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class Account {
 
   private Integer age;
 
-  public Account(String username) {
+  public Account(final String username) {
     this.username = username;
   }
 
@@ -58,14 +58,14 @@ public class Account {
   @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private Set<Study> studies = new HashSet<>();
 
-  public Account addStudy(Study study) {
-    this.getStudies().add(study);
+  public Account addStudy(final Study study) {
+    getStudies().add(study);
     study.setOwner(this);
     return this;
   }
 
-  public Account remove(Study study) {
-    this.getStudies().remove(study);
+  public Account remove(final Study study) {
+    getStudies().remove(study);
     study.setOwner(null);
     return this;
   }

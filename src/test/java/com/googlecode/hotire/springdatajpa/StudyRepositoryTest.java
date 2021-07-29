@@ -11,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.googlecode.hotire.springdatajpa.ex.Account;
+import com.googlecode.hotire.springdatajpa.ex.Study;
+import com.googlecode.hotire.springdatajpa.ex.StudyMapping;
+import com.googlecode.hotire.springdatajpa.ex.StudyRepository;
 import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 @RunWith(SpringRunner.class)
@@ -25,12 +29,12 @@ public class StudyRepositoryTest {
 
   @PostConstruct
   public void config () {
-    Account account = new Account();
+    final Account account = new Account();
     account.addStudy(Study.createInstance("hello"));
     account.addStudy(Study.createInstance("hello2"));
     account.addStudy(Study.createInstance("hello3"));
     accountRepository.saveAndFlush(account);
-    Account account2 = new Account();
+    final Account account2 = new Account();
     account2.addStudy(Study.createInstance("hello4"));
     account2.addStudy(Study.createInstance("hello5"));
     account2.addStudy(Study.createInstance("hello6"));
@@ -40,24 +44,24 @@ public class StudyRepositoryTest {
 
   @Test
   public void findAll() {
-    List<Study> studies = studyRepository.findAll();
+    final List<Study> studies = studyRepository.findAll();
   }
 
   @Test
   public void findAllJoinFetch() {
-    Set<Study> studies = studyRepository.findAllJoinFetch();
+    final Set<Study> studies = studyRepository.findAllJoinFetch();
     studies.forEach(study -> System.out.println(study.getOwner()));
   }
 
   @Test
   public void findAllBy() {
-    List<StudyMapping> studies = studyRepository.findAllBy();
+    final List<StudyMapping> studies = studyRepository.findAllBy();
     studies.forEach(study -> System.out.println(study.getOwner()));
   }
 
   @Test
   public void findAllJoinLeft() {
-    Set<Study> studies = studyRepository.findAllJoinLeft();
+    final Set<Study> studies = studyRepository.findAllJoinLeft();
     studies.forEach(study -> System.out.println(study.getOwner()));
   }
 }

@@ -54,15 +54,6 @@ factory.addAdvice(transactionInterceptor);
 - RepositoryFactoryBeanSupport.afterPropertiesSet()
 
 
-## EntityManager
-
-- SessionImpl
-
-
-### EntityManagerFactory
-
-- SessionFactoryImpl
-
 
 
 

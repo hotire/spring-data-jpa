@@ -11,7 +11,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.googlecode.hotire.springdatajpa.Entity;
+import com.googlecode.hotire.springdatajpa.ex.Entity;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;

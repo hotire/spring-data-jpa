@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.QAccount;
+import com.googlecode.hotire.springdatajpa.ex.Account;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class AccountRepositorySupport  {
 
   private final JPAQueryFactory jpaQueryFactory;
 
-  public List<Account> findByName(String name) {
+  public List<Account> findByName(final String name) {
     return jpaQueryFactory.selectFrom(QAccount.account).where(account.username.eq(name)).fetch();
   }
 }

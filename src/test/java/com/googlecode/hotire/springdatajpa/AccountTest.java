@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.googlecode.hotire.springdatajpa.ex.Account;
+import com.googlecode.hotire.springdatajpa.ex.Study;
 import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 @DataJpaTest
@@ -27,17 +29,17 @@ class AccountTest {
 
   @PostConstruct
   public void config () {
-    Account account = new Account();
+    final Account account = new Account();
     account.addStudy(Study.createInstance("hello"));
     account.addStudy(Study.createInstance("hello2"));
     account.addStudy(Study.createInstance("hello3"));
     accountRepository.saveAndFlush(account);
-    Account account2 = new Account();
+    final Account account2 = new Account();
     account2.addStudy(Study.createInstance("hello4"));
     account2.addStudy(Study.createInstance("hello5"));
     account2.addStudy(Study.createInstance("hello6"));
     accountRepository.saveAndFlush(account2);
-    Account account3 = new Account();
+    final Account account3 = new Account();
     account3.setUsername("hotire");
     account3.setAge(1);
     accountRepository.saveAndFlush(account3);
@@ -46,34 +48,34 @@ class AccountTest {
 
   @Test
   void find() {
-    Account result = accountRepository.findById(1L).orElseThrow();
+    final Account result = accountRepository.findById(1L).orElseThrow();
     System.out.println(result.getStudies());
   }
 
   @Test
   void findAll() {
-    List<Account> accounts = accountRepository.findAll();
+    final List<Account> accounts = accountRepository.findAll();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println("study : " + account.getStudies().size()));
   }
 
   @Test
   void findAllJoinFetch(){
-    Set<Account> accounts = accountRepository.findAllJoinFetch();
+    final Set<Account> accounts = accountRepository.findAllJoinFetch();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 
   @Test
   void findAllJoinLeft() {
-    List<Account> accounts = accountRepository.findAllJoinLeft();
+    final List<Account> accounts = accountRepository.findAllJoinLeft();
     System.out.println("accounts size : " + accounts.size());
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 
   @Test
   void findAllEntityGraph(){
-    List<Account> accounts = accountRepository.findAllEntityGraph();
+    final List<Account> accounts = accountRepository.findAllEntityGraph();
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 

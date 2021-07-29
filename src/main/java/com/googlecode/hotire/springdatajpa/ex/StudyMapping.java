@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa;
+package com.googlecode.hotire.springdatajpa.ex;
 
 public interface StudyMapping {
 

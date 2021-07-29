@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa;
+package com.googlecode.hotire.springdatajpa.ex;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -39,7 +39,7 @@ public class AccountService {
 //    entityManager.close();
   }
 
-  public Account save(Account account) {
+  public Account save(final Account account) {
     return accountRepository.save(account);
   }
 
@@ -48,7 +48,7 @@ public class AccountService {
   }
 
   @Transactional
-  public void service(Consumer<Account> accountConsumer, Account account) {
+  public void service(final Consumer<Account> accountConsumer, final Account account) {
     accountConsumer.accept(account);
   }
 }

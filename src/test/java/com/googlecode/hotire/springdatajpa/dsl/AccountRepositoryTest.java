@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.QAccount;
+import com.googlecode.hotire.springdatajpa.ex.Account;
 import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import com.querydsl.core.types.Predicate;
 
@@ -35,9 +35,9 @@ class AccountRepositoryTest {
   @Rollback(value = false)
   @Test
   void save() {
-    Account account = accountRepository.save(new Account());
+    final Account account = accountRepository.save(new Account());
 
-    List<Account> result = accountRepository.findAll();
+    final List<Account> result = accountRepository.findAll();
 
     System.out.println(result);
 

@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
-import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.QAccount;
+import com.googlecode.hotire.springdatajpa.ex.Account;
 
 @Repository
 public class AccountQuerydslRepositorySupport extends QuerydslRepositorySupport {
@@ -17,7 +17,7 @@ public class AccountQuerydslRepositorySupport extends QuerydslRepositorySupport 
     super(Account.class);
   }
 
-  public List<Account> findByName(String name) {
+  public List<Account> findByName(final String name) {
     return from(QAccount.account).where(account.username.eq(name)).fetch();
   }
 }

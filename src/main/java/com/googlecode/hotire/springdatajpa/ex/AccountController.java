@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa;
+package com.googlecode.hotire.springdatajpa.ex;
 
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class AccountController {
   }
 
   @GetMapping("/save")
-  public ResponseEntity<Account> getEntityManager2(@RequestParam boolean isThrow) {
-    Account account = new Account();
+  public ResponseEntity<Account> getEntityManager2(@RequestParam final boolean isThrow) {
+    final Account account = new Account();
     account.setUsername("hello");
     account.setPassword("1234");
     accountService.service(account1 -> {

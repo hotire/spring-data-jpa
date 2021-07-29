@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-import com.googlecode.hotire.springdatajpa.Account;
 import com.googlecode.hotire.springdatajpa.dsl.AccountRepositoryCustom;
+import com.googlecode.hotire.springdatajpa.ex.Account;
 
 /**
  * N +1
