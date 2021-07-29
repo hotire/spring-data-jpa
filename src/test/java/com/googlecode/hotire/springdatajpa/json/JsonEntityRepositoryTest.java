@@ -23,7 +23,7 @@ class JsonEntityRepositoryTest {
         final List<JsonEntity> result = jsonEntityRepository.findByAge(1);
 
         // then
-        assertThat(result).isNotNull()
+        assertThat(result).isNotNull();
     }
 
 }
