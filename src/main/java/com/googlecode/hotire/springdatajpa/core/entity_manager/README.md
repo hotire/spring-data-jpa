@@ -7,9 +7,10 @@
 3. createNativeEntityManagerFactory()
 4. provider.createContainerEntityManagerFactory(this.persistenceUnitInfo, getJpaPropertyMap());
 
-## SpringHibernateJpaPersistenceProvider
+## SpringHibernateJpaPersistenceProvider extends PersistenceProvider
 
 1. createContainerEntityManagerFactory()
+
 
 
 
