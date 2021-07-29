@@ -1,4 +1,11 @@
 spring:
+  profiles:
+    active: local
+
+---
+
+spring:
+  profiles: local
   jpa:
     hibernate:
     show-sql: true
@@ -7,3 +14,29 @@ spring:
     properties:
       hibernate:
         metadata_builder_contributor: com.googlecode.hotire.springdatajpa.json.SqlFunctionsMetadataBuilderContributor
+
+
+---
+
+spring:
+  profiles: beta
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+  jpa:
+    properties:
+      hibernate:
+        metadata_builder_contributor: com.googlecode.hotire.springdatajpa.json.SqlFunctionsMetadataBuilderContributor
+        use_sql_comments: true
+        format_sql: true
+        query:
+          in_clause_parameter_padding: true
+      org.hibernate.envers.store_data_at_delete: true
+    show_sql: true
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: true
+
+
