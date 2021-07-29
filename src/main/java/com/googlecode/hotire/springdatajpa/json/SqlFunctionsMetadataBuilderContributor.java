@@ -7,7 +7,7 @@ import org.hibernate.type.StandardBasicTypes;
 
 public class SqlFunctionsMetadataBuilderContributor implements MetadataBuilderContributor {
     @Override
-    public void contribute(MetadataBuilder metadataBuilder) {
+    public void contribute(final MetadataBuilder metadataBuilder) {
         metadataBuilder.applySqlFunction("JSON_CONTAINS", new StandardSQLFunction("JSON_CONTAINS", StandardBasicTypes.BOOLEAN));
     }
 }
