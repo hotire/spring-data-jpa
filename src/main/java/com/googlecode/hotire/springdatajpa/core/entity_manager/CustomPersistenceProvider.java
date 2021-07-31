@@ -1,15 +1,29 @@
 package com.googlecode.hotire.springdatajpa.core.entity_manager;
 
-import javax.persistence.spi.PersistenceProvider;
+import java.util.Map;
+
+import javax.persistence.EntityManagerFactory;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.Delegate;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
-public class CustomPersistenceProvider implements PersistenceProvider {
+public class CustomPersistenceProvider extends HibernatePersistenceProvider {
 
-    @Delegate
-    private final HibernatePersistenceProvider hibernatePersistenceProvider;
+    @Override
+    public EntityManagerFactory createEntityManagerFactory(final String persistenceUnitName, final Map properties) {
+        log.trace( "Starting createEntityManagerFactory for persistenceUnitName %s", persistenceUnitName );
+        final EntityManagerFactoryBuilder builder = getEntityManagerFactoryBuilderOrNull(persistenceUnitName, properties );
+        if ( builder == null ) {
+            log.trace( "Could not obtain matching EntityManagerFactoryBuilder, returning null" );
+            return null;
+        }
+        else {
+            return builder.build();
+        }
+    }
 }
