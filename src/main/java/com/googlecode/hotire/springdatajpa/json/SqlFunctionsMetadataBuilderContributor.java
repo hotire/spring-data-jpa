@@ -6,7 +6,8 @@ import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.type.StandardBasicTypes;
 
 /**
- * @see org.hibernate.jpa.boot.internal.SpringHibernateJpaPersistenceProvider#applyMetadataBuilderContributor
+ * @see org.hibernate.jpa.boot.internal.SpringHibernateJpaPersistenceProvider#createContainerEntityManagerFactory
+ * @see org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl#applyMetadataBuilderContributor
  */
 public class SqlFunctionsMetadataBuilderContributor implements MetadataBuilderContributor {
     @Override
