@@ -7,7 +7,11 @@ import javax.persistence.PersistenceException;
 import javax.persistence.spi.PersistenceProvider;
 
 import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
+/**
+ * @see LocalContainerEntityManagerFactoryBean
+ */
 public class CustomEntityManagerFactoryBean extends AbstractEntityManagerFactoryBean {
     @Override
     protected EntityManagerFactory createNativeEntityManagerFactory() throws PersistenceException {
