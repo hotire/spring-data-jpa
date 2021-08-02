@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.googlecode.hotire.springdatajpa.QAccount;
 import com.googlecode.hotire.springdatajpa.ex.Account;
+import com.googlecode.hotire.springdatajpa.ex.QAccount;
 import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import com.querydsl.core.types.Predicate;
 

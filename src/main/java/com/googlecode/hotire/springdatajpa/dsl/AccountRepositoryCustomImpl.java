@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-import com.googlecode.hotire.springdatajpa.QAccount;
 import com.googlecode.hotire.springdatajpa.ex.Account;
+import com.googlecode.hotire.springdatajpa.ex.QAccount;
 
 public class AccountRepositoryCustomImpl extends QuerydslRepositorySupport implements
   AccountRepositoryCustom {

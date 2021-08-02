@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.googlecode.hotire.springdatajpa.QAccount;
 import com.googlecode.hotire.springdatajpa.ex.Account;
+import com.googlecode.hotire.springdatajpa.ex.QAccount;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAUpdateClause;

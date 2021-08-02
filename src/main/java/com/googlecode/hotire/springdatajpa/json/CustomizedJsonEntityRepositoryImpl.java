@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class CustomizedJsonEntityRepositoryImpl implements CustomizedJsonEntityRepository {
 
     private final EntityManager entityManager;
-    private final ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Getter
     @RequiredArgsConstructor
