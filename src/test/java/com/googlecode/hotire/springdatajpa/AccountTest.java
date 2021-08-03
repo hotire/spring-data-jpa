@@ -79,6 +79,7 @@ class AccountTest {
     accounts.forEach(account -> System.out.println(account.getStudies()));
   }
 
+
   @Test
   void bulk() {
     final String qlString = "update Account a "

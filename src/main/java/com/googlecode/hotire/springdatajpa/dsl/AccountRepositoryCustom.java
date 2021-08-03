@@ -6,4 +6,6 @@ import com.googlecode.hotire.springdatajpa.ex.Account;
 
 public interface AccountRepositoryCustom {
   List<Account> findByName(String name);
+
+  List<Account> findByName2(String name);
 }

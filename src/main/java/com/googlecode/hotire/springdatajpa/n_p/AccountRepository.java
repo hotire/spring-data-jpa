@@ -32,4 +32,7 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Account
   @EntityGraph(attributePaths = "studies")
   @Query("select a from Account a")
   List<Account> findAllEntityGraph();
+
+  @EntityGraph(attributePaths = "studies")
+  List<Account> findByUsername(String userName);
 }
