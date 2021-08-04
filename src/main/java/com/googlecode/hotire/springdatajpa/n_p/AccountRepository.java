@@ -22,6 +22,9 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Account
    */
   @Query("select a from Account a join fetch a.studies")
   Set<Account> findAllJoinFetch();
+  
+  @Query("select a from Account a join fetch a.studies")
+  List<Account> findAllByCartasian();
 
   @Query("select a from Account a left outer join Study s on a.id = s.owner.id")
   List<Account> findAllJoinLeft();
@@ -35,4 +38,6 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Account
 
   @EntityGraph(attributePaths = "studies")
   List<Account> findByUsername(String userName);
+
+
 }

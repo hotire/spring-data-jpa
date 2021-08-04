@@ -62,6 +62,15 @@ public class AccountRepositorySupportTest {
   }
 
   @Test
+  public void findAllByCartasian() {
+    // When
+    final List<Account> accounts = accountRepository.findAllByCartasian();
+
+    // Then
+    assertThat(accounts.size()).isEqualTo(2);
+  }
+
+  @Test
   public void findByName2() {
     // Given
     final String name = "hotire";
