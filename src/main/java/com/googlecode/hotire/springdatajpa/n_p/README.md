@@ -18,3 +18,5 @@
 				hasLimit )
 		&& containsCollectionFetches();
 ~~~
+
+사용시 getEntityGraphQueryHint() true를 리턴하여 needsDistincting true로 설정된다. 
