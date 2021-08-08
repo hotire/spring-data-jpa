@@ -54,6 +54,16 @@ factory.addAdvice(transactionInterceptor);
 - RepositoryFactoryBeanSupport.afterPropertiesSet()
 
 
+## RepositoryInformation
+
+### RepositoryFactorySupport
+
+- getRepository()
+
+- getRepositoryInformation()
+
+ 
+
 
 
 
