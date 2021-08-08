@@ -65,6 +65,12 @@ factory.addAdvice(transactionInterceptor);
 
 ## RepositoryMetadata
 
+- org.springframework.data.repository.core.support.RepositoryFactorySupport#getRepository(Class, RepositoryFragments) 
+
+## AbstractRepositoryMetadata
+
+- getMetadata
+
  
 
 
