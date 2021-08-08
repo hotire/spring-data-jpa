@@ -62,6 +62,9 @@ factory.addAdvice(transactionInterceptor);
 
 - getRepositoryInformation()
 
+
+## RepositoryMetadata
+
  
 
 

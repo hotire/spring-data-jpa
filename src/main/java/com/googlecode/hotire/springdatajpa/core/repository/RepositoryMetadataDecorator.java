@@ -5,10 +5,14 @@ import java.util.Set;
 
 import org.springframework.data.repository.core.CrudMethods;
 import org.springframework.data.repository.core.RepositoryMetadata;
+import org.springframework.data.repository.core.support.RepositoryComposition.RepositoryFragments;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getRepository(Class, RepositoryFragments) 
+ */
 @RequiredArgsConstructor
 public class RepositoryMetadataDecorator implements RepositoryMetadata {
 
