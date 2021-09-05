@@ -4,8 +4,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import lombok.Data;
+
+@Data
 @Entity
-@DiscriminatorValue("cat")
+@DiscriminatorValue("CAT")
 @PrimaryKeyJoinColumn(name = "animalId")
 public class Cat extends Animal {
 
