@@ -11,9 +11,4 @@ import lombok.Data;
 @DiscriminatorValue("DOG")
 @PrimaryKeyJoinColumn(name = "animalId")
 public class Dog extends Animal {
-
-    public Dog() {
-        setType("DOG");
-    }
-
 }
