@@ -21,5 +21,4 @@ public class Animal {
     private String species;
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
-    private Long animalId;
 }
