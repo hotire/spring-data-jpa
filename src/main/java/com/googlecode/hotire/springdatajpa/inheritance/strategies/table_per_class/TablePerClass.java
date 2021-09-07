@@ -12,5 +12,8 @@ import lombok.Data;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class TablePerClass {
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) cannot use IDENTITY
     private Long id;
+
+    private String common;
 }
