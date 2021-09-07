@@ -2,11 +2,7 @@ package com.googlecode.hotire.springdatajpa.inheritance.strategies.table_per_cla
 
 import javax.persistence.Entity;
 
-import lombok.Data;
-
-
-@Data
 @Entity
-public class TablePerClassA extends TablePerClass {
-    private String nameA;
+public class TablePerClassB extends TablePerClass {
+    private String nameB;
 }
