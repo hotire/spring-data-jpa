@@ -14,6 +14,7 @@ class EntityListenersEntityRepositoryTest {
 
     private final EntityListenersEntityRepository repository;
 
+    // BeansException
     @Test
     void save() {
         repository.save(new EntityListenersEntity());
