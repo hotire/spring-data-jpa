@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.persist;
+package com.googlecode.hotire.springdatajpa.core.persist;
 
 import java.io.Serializable;
 
