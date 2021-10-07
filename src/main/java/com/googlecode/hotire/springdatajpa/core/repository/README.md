@@ -10,15 +10,20 @@ factory.addAdvice(transactionInterceptor);
 ~~~
 
 
-## JpaRepository
+## JpaRepository 
 
-### Repository
+JpaRepository 인터페이스의 경우 아래의 인터페이스를 사용한다. 
+
+### Repository 
 
 ### CrudRepository
 
 ### PagingAndSortingRepository
 
 ### SimpleJpaRepository
+
+구현체의 모습이 SimpleJpaRepository 이다. 
+
 
 
 ### JpaRepositoriesAutoConfiguration
@@ -69,7 +74,7 @@ factory.addAdvice(transactionInterceptor);
 
 ## AbstractRepositoryMetadata
 
-- getMetadata
+- getMetadata 해당 메서드를 통해 Repository의 CRUD... etc 정보를 얻어온다. 
 
  
 
