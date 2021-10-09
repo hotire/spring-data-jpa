@@ -24,6 +24,10 @@ JpaRepository 인터페이스의 경우 아래의 인터페이스를 사용한�
 
 구현체의 모습이 SimpleJpaRepository 이다. 
 
+- JpaRepositoryFactory extends RepositoryFactorySupport 의 repositoryBaseClass가 empty로 설정되어서 
+- JpaRepositoryFactory.getRepositoryInformation 호출한다. 
+- getRepositoryInformation의 리턴은 SimpleJpaRepository 이다.
+- RepositoryFactorySupport getTargetRepositoryViaReflection를 통해 SimpleJpaRepository 구현체를 생성한다. 
 
 
 ### JpaRepositoriesAutoConfiguration
