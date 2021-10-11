@@ -9,10 +9,14 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.util.ReflectionUtils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * @see org.springframework.data.jpa.repository.support.SimpleJpaRepository
  */
-public class SimpleJpaRepositoryFactory {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class SimpleJpaRepositoryFactory {
 
     /**
      * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getTargetRepositoryViaReflection(RepositoryInformation, Object...)
