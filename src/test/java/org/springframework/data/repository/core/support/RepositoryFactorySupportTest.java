@@ -1,5 +1,6 @@
 package org.springframework.data.repository.core.support;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
 import javax.persistence.EntityManager;
@@ -32,17 +33,19 @@ class RepositoryFactorySupportTest {
     void getTargetRepository() {
         // given
         final EntityManager entityManager = mock(EntityManager.class);
-        final RepositoryFactorySupport support = new JpaRepositoryFactory(entityManager);
+        assertThatThrownBy(() -> {
+            final RepositoryFactorySupport support = new JpaRepositoryFactory(entityManager);
 
-        final RepositoryMetadata metadata = AbstractRepositoryMetadata.getMetadata(CustomRepository.class);
-        final RepositoryFragments fragments = RepositoryFragments.empty();
-        final RepositoryComposition composition = getRepositoryComposition(support, metadata, fragments);
-        final RepositoryInformation information = getRepositoryInformation(metadata, composition);
+            final RepositoryMetadata metadata = AbstractRepositoryMetadata.getMetadata(CustomRepository.class);
+            final RepositoryFragments fragments = RepositoryFragments.empty();
+            final RepositoryComposition composition = getRepositoryComposition(support, metadata, fragments);
+            final RepositoryInformation information = getRepositoryInformation(metadata, composition);
 
-        // when
-        final JpaRepositoryImplementation<?, ?>  repository = (JpaRepositoryImplementation<?, ?>) support.getTargetRepository(information);
+            // when
+            final JpaRepositoryImplementation<?, ?>  repository = (JpaRepositoryImplementation<?, ?>) support.getTargetRepository(information);
 
-        // no assert
+            // no assert
+        }).isInstanceOf(NullPointerException.class);
     }
 
     private RepositoryInformation getRepositoryInformation(final RepositoryMetadata metadata,
