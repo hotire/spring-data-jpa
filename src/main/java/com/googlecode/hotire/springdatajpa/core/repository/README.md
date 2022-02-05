@@ -37,6 +37,7 @@ JpaRepository 인터페이스의 경우 아래의 인터페이스를 사용한�
 ### AutoConfiguredAnnotationRepositoryConfigurationSource
 
 - spring-core / boot
+https://github.com/hotire/spring-core/tree/master/service/src/main/java/com/github/hotire/springcore/boot
 - getBasePackages()
 
 ### RepositoryConfigurationDelegate
