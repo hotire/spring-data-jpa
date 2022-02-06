@@ -9,11 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
+import org.springframework.data.repository.query.Param;
 
 public interface LockEntityRepository extends JpaRepository<LockEntity, Long> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(value = "select l from LockEntity l where l.id = :id")
     @QueryHints({ @QueryHint(name = "javax.persistence.lock.timeout", value = "3000")})
-    Optional<LockEntity> findByIdForUpdate(Long id);
+    Optional<LockEntity> findByIdForUpdate(@Param("id") Long id);
 }
