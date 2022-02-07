@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.data.annotation.Version;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +15,7 @@ import lombok.Setter;
 public class LockEntity {
     @Id @GeneratedValue
     private Long id;
+
+    @Version
+    private Long version;
 }
