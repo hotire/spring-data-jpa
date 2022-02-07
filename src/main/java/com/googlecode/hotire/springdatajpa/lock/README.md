@@ -14,4 +14,5 @@ When the transaction needs to adhere to ACID rules strictly, we should use Pessi
 
 
 ## References 
+- https://www.baeldung.com/jpa-optimistic-locking
 - https://www.baeldung.com/java-jpa-transaction-locks
