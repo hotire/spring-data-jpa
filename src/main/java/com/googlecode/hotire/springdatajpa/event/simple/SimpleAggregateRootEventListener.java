@@ -24,6 +24,6 @@ public class SimpleAggregateRootEventListener {
      */
     @TransactionalEventListener
     public void transactionalEventListen(final SimpleAggregateRoot root) {
-
+        log.info("SimpleAggregateRoot");
     }
 }
