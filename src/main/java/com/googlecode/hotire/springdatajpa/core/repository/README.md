@@ -34,7 +34,13 @@ JpaRepository 인터페이스의 경우 아래의 인터페이스를 사용한�
 
 ### JpaRepositoriesRegistrar extends AbstractRepositoryConfigurationSourceSupport
 
+: RepositoryConfigurationDelegate 에게 처리를 위임한다. 
+
+- registerBeanDefinitions
+
 ### AutoConfiguredAnnotationRepositoryConfigurationSource
+
+: AbstractRepositoryConfigurationSourceSupport 내부에 있는 클래스로 getBasePackages에 주요 역할을 한다. 
 
 - spring-core / boot
 https://github.com/hotire/spring-core/tree/master/service/src/main/java/com/github/hotire/springcore/boot
@@ -60,6 +66,11 @@ protected Streamable<String> getBasePackages() {
 
 ### JpaRepositoryConfigExtension extends RepositoryConfigurationExtension
 
+- getRepositoryConfigurations : scan package repository 
+
+- configSource.getCandidates(loader) 
+- RepositoryConfigurationSourceSupport.getCandidates
+- AutoConfiguredAnnotationRepositoryConfigurationSource#getBasePackages
 - getRepositoryFactoryBeanClassName -> JpaRepositoryFactoryBean.class.getName()
 
 - EnableJpaRepositories -> Import(JpaRepositoriesRegistrar)
@@ -91,8 +102,9 @@ protected Streamable<String> getBasePackages() {
  
 
 
+### ETC
 
-
+- AnnotationRepositoryConfigurationSource#getBasePackages extends RepositoryConfigurationSourceSupport 
 
 
 
