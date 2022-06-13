@@ -13,6 +13,11 @@ import org.springframework.data.domain.DomainEvents;
 /**
  * @see org.springframework.data.repository.core.support.EventPublishingRepositoryProxyPostProcessor
  * @see org.springframework.data.repository.core.support.RepositoryProxyPostProcessor
+ * @see org.springframework.data.repository.core.support.RepositoryFactorySupport
+ * @see org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport
+ *
+ * RepositoryFactoryBeanSupport 에서 EventPublishingRepositoryProxyPostProcessor 주입
+ * RepositoryFactorySupport에서 Repository 생성
  */
 public class AbstractAggregateRootCore extends AbstractAggregateRoot<AbstractAggregateRootCore> {
     private transient final @Transient
