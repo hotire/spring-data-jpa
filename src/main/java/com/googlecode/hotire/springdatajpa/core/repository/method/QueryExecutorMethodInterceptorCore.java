@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.core.repository;
+package com.googlecode.hotire.springdatajpa.core.repository.method;
 
 /**
  * @see org.springframework.data.repository.core.support.RepositoryFactorySupport.QueryExecutorMethodInterceptor
