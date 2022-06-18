@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.repository.core.RepositoryInformation;
+import org.springframework.data.repository.core.RepositoryMetadata;
+import org.springframework.data.repository.core.support.RepositoryComposition;
 import org.springframework.data.util.ReflectionUtils;
 
 import lombok.AccessLevel;
@@ -19,7 +21,7 @@ import lombok.NoArgsConstructor;
 public final class SimpleJpaRepositoryFactory {
 
     /**
-     * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getTargetRepositoryViaReflection(RepositoryInformation, Object...)
+     * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getTargetRepositoryViaReflection(Class, Object...)
      */
     @SuppressWarnings("unchecked")
     public static <R> R getTargetRepositoryViaReflection(final Class<?> baseClass, final Object... constructorArguments) {
@@ -29,5 +31,22 @@ public final class SimpleJpaRepositoryFactory {
                           .orElseThrow(() -> new IllegalStateException(String.format(
                                   "No suitable constructor found on %s to match the given arguments: %s. Make sure you implement a constructor taking these",
                                   baseClass, Arrays.stream(constructorArguments).map(Object::getClass).collect(Collectors.toList()))));
+    }
+
+    /**
+     * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getRepositoryInformation(RepositoryMetadata, RepositoryComposition)
+     */
+    private RepositoryInformation getRepositoryInformation(final RepositoryMetadata metadata,
+                                                           final RepositoryComposition composition) {
+        getRepositoryBaseClass(metadata);
+        return null;
+    }
+
+    /**
+     * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getRepositoryBaseClass(RepositoryMetadata)
+     * @see org.springframework.data.jpa.repository.support.JpaRepositoryFactory#getRepositoryBaseClass(RepositoryMetadata)
+     */
+    protected Class<?> getRepositoryBaseClass(final RepositoryMetadata metadata) {
+        return null;
     }
 }
