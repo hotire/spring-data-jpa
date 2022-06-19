@@ -16,7 +16,7 @@ import lombok.Data;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type")
 public class Animal {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String species;
     @Column(name = "type", insertable = false, updatable = false)
