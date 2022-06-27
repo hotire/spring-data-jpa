@@ -46,16 +46,69 @@ non-transactional 로 실행되며 부모 트랜잭션이 존재하면 Exception
 
 ## Isolation
 
-
 ## TransactionManager
 org.springframework.transaction.TransactionManager
 
 - PlatformTransactionManager
 - ReactiveTransactionManager
 
+### AOP
+
+PointCut : TransactionAttributeSourcePointcut 생성
+Advice : TransactionInterceptor 
+
+결합 형태의 Advisor를 생성한다. 
+
+BeanPostProcessor의 구현체 AnnotationAwareAspectJAutoProxyCreator에서 Advisor를 Beanfactory에서 찾아오게된다. 
+
+Advisor는 match로 검사하고 TransactionInterceptor를 Proxy 객체를 interface기반 DynamicProxy, class일 경우 cglib으로 생성한다.
+
+
+
+
+### TransactionInterceptor
+
+AOP 설정에 의해 설정된 TransactionInterceptor가 설정되어 invokeWithTransaction에서 트랜잭션과 함께 메서드가 실행되고 
+
+- completeTransactionAfterThrowing : 
+
+- commitTransactionAfterReturning : 
+
+rollback / commit을 진행한다.
+
+
 ### JpaTransactionManager
 
 PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
+
+### Summary
+
+- AOP에 의해 TransactionInterceptor 가 AOP로 설정된다.
+- TransactionManager에 의해 커밋, 롤백이 실행된다.
+
+
+// 
+- AnnotationAwareAspectJAutoProxyCreator 
+
+- BeanFactoryAspectJAdvisorsBuilder
+
+- ReflectiveAspectJAdvisorFactory : AspectJAdvisorFactory  custom Annotation을 찾아 Advisor구현체를 생성한다. 구현체는 InstantiationModelAwarePointcutAdvisorImpl 사용한다.
+
+- Transaction 의 경우 Advisor 구현체는 BeanFactoryTransactionAttributeSourceAdvisor 를 사용한다. 
+
+  내부적으로 TransactionAttributeSource 구현체 AnnotationTransactionAttributeSource 사용한다. 
+
+  AnnotationTransactionAttributeSource 을 통해 Method @Transaactional 를 찾아 advice 건다.
+
+- DefaultAopProxyFactory 를 통해 AopProxy 생성한다.
+
+- AopProxy 를 통해 Proxy 객체를 생성하게 된다.
+
+
+### References
+
+- https://cobbybb.tistory.com/25
+
 
 
 ## Rollback ISSUE
