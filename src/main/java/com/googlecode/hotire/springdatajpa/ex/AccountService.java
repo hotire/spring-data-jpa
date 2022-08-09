@@ -47,6 +47,10 @@ public class AccountService {
     return accountRepository.findAll();
   }
 
+  public List<Account> findAllJoinFetch() {
+    return accountRepository.findAllJoinLeft();
+  }
+
   @Transactional
   public void service(final Consumer<Account> accountConsumer, final Account account) {
     accountConsumer.accept(account);

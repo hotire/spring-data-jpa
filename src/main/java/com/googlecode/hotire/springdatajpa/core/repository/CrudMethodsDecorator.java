@@ -9,6 +9,10 @@ import org.springframework.data.repository.core.support.DefaultCrudMethods;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @see org.springframework.data.repository.core.CrudMethods;
+ * @see org.springframework.data.repository.core.support.DefaultCrudMethods;
+ */
 @RequiredArgsConstructor
 public class CrudMethodsDecorator implements CrudMethods {
 

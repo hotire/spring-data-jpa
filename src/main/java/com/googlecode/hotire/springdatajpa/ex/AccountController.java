@@ -35,6 +35,11 @@ public class AccountController {
     return ResponseEntity.ok().body(accountService.list());
   }
 
+  @GetMapping("/list-fetch")
+  public ResponseEntity<List<Account>> findAllJoinFetch() {
+    return ResponseEntity.ok().body(accountService.findAllJoinFetch());
+  }
+
   @GetMapping("/save")
   public ResponseEntity<Account> getEntityManager2(@RequestParam final boolean isThrow) {
     final Account account = new Account();

@@ -1,6 +1,5 @@
 # Core
 
-
 ## Config
 
 ### HibernateJpaAutoConfiguration
@@ -20,4 +19,5 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration
 				.mappingResources(getMappingResources()).jta(isJta()).build();
 	}
 ~~~
+
 

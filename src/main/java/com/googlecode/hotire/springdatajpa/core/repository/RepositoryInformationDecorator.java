@@ -10,6 +10,10 @@ import org.springframework.data.util.Streamable;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * @see RepositoryInformation
+ * @see org.springframework.data.repository.core.support.DefaultRepositoryInformation
+ */
 @RequiredArgsConstructor
 public class RepositoryInformationDecorator implements RepositoryInformation {
 
