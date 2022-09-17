@@ -5,6 +5,7 @@ import org.springframework.data.domain.Persistable;
 
 /**
  * @see Persistable
+ * @see org.springframework.data.jpa.repository.support.JpaPersistableEntityInformation
  */
 public interface PersistableCore {
 
