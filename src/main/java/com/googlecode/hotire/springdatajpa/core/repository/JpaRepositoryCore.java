@@ -5,6 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @see JpaRepository
  */
-public class JpaRepositoryCore {
+public interface JpaRepositoryCore {
+
+  /**
+   * @see JpaRepository#deleteInBatch(Iterable) 
+   */
+  void deleteInBatch(Iterable<T> entities);
 
 }
