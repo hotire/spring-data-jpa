@@ -4,6 +4,15 @@ spring:
   aop:
     proxy-target-class: true
 
+logging:
+  level:
+    org:
+      hibernate:
+        engine:
+          jdbc:
+            spi.SqlExceptionHelper: OFF
+
+
 ---
 
 spring:
@@ -40,5 +49,6 @@ spring:
     hibernate:
       ddl-auto: none
       use-new-id-generator-mappings: true
+
 
 
