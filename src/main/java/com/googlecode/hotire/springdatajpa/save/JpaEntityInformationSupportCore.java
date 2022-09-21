@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
 
 /**
+ * @see JpaEntityInformation
  * @see JpaEntityInformationSupport
  */
 public class JpaEntityInformationSupportCore {
