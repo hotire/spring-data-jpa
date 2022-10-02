@@ -3,15 +3,17 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import org.springframework.jdbc.datasource.AbstractDataSource;
+import com.zaxxer.hikari.HikariDataSource;
 
 /**
  * @see DataSource
  * @see AbstractDataSource
+ * @see HikariDataSource
  */
 public interface DataSourceCore {
 
     /**
-     * @see DataSource#get   Connection()
+     * @see DataSource#getConnection()
      */
     Connection getConnection() throws SQLException;
 
