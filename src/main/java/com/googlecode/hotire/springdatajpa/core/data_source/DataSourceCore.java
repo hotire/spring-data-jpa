@@ -14,11 +14,13 @@ public interface DataSourceCore {
 
     /**
      * @see DataSource#getConnection()
+     * @see HikariDataSource#getConnection()
      */
     Connection getConnection() throws SQLException;
 
     /**
      * @see DataSource#getConnection(String, String)
+     * @see HikariDataSource#getConnection(String, String)
      */
     Connection getConnection(String username, String password)
         throws SQLException;
