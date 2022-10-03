@@ -1,13 +1,21 @@
 package com.googlecode.hotire.springdatajpa.core.connection;
 
 
-import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.SQLException;
 import org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 
 /**
  * @see ConnectionProvider
  * @see DatasourceConnectionProviderImpl
  */
-public class ConnectionProviderCore {
+public interface ConnectionProviderCore {
 
+    /**
+     * @see ConnectionProvider#getConnection()
+     * @see DatasourceConnectionProviderImpl#getConnection()
+     * @see DatasourceConnectionProviderImpl#getConnection()
+     */
+    Connection getConnection() throws SQLException;
 }
