@@ -15,7 +15,6 @@ public interface ConnectionProviderCore {
     /**
      * @see ConnectionProvider#getConnection()
      * @see DatasourceConnectionProviderImpl#getConnection()
-     * @see DatasourceConnectionProviderImpl#getConnection()
      */
     Connection getConnection() throws SQLException;
 }
