@@ -11,7 +11,7 @@ public interface HikariPoolCore {
 
     /**
      * @see HikariPool#getConnection() 
-     * @see HikariPool#getConnection(long) () 
+     * @see HikariPool#getConnection(long)
      */
     Connection getConnection() throws SQLException;
 }
