@@ -9,7 +9,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 public class TransactionSynchronizationManagerCore {
 
     /**
-     * @see TransactionSynchronizationManager#registerSynchronization(TransactionSynchronization) 
+     * @see TransactionSynchronizationManager#registerSynchronization(TransactionSynchronization)
      */
     public static void registerSynchronization(TransactionSynchronization synchronization)
         throws IllegalStateException {
