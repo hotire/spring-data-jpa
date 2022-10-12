@@ -15,4 +15,12 @@ public class TransactionSynchronizationManagerCore {
         throws IllegalStateException {
         TransactionSynchronizationManager.registerSynchronization(synchronization);
     }
+
+    /**
+     * @see TransactionSynchronizationManager#isSynchronizationActive()
+     */
+    public static boolean isSynchronizationActive() {
+        return TransactionSynchronizationManager.isSynchronizationActive();
+    }
+
 }
