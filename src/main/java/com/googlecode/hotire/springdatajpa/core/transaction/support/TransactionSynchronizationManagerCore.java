@@ -10,6 +10,9 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
  */
 public class TransactionSynchronizationManagerCore {
 
+    /**
+     * @see TransactionSynchronizationManager#synchronizations
+     */
     private static final ThreadLocal<Set<TransactionSynchronization>> synchronizations =
         new NamedThreadLocal<>("Transaction synchronizations");
 
