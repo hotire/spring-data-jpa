@@ -1,12 +1,11 @@
 package com.googlecode.hotire.springdatajpa.core;
 
+import java.util.Optional;
 import javax.persistence.EntityManager;
-
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @DataJpaTest
@@ -37,5 +36,11 @@ class CoreRepositoryTest {
         final Core result  = coreRepository.findById(core.getId()).orElseThrow();
 
         log.info("{}", result);
+    }
+
+    @Test
+    void nativeFindById() {
+        final Optional<Core> result = coreRepository.nativeFindById(1L);
+        System.out.println(result.orElse(null));
     }
 }
