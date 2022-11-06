@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.core.query;
+package com.googlecode.hotire.springdatajpa.core.repository.method;
 
 import org.springframework.data.jpa.repository.Query;
 
