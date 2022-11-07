@@ -41,6 +41,12 @@ class CoreRepositoryTest {
     @Test
     void nativeFindById() {
         final Optional<Core> result = coreRepository.nativeFindById(1L);
-        System.out.println(result.orElse(null));
+        log.info("{}", result);
+    }
+
+    @Test
+    void findByName() {
+        final Optional<Core> result = coreRepository.findByName("");
+        log.info("{}", result);
     }
 }

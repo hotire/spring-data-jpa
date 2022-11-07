@@ -11,4 +11,6 @@ public interface CoreRepository extends JpaRepository<Core, Long> {
         value = "select * from core where id = :id"
     )
     Optional<Core> nativeFindById(Long id);
+
+    Optional<Core> findByName(String name);
 }
