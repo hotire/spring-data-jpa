@@ -1,5 +1,7 @@
 package com.googlecode.hotire.springdatajpa.core;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,5 +19,6 @@ public class Core {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Access(AccessType.FIELD)
     private String name;
 }
