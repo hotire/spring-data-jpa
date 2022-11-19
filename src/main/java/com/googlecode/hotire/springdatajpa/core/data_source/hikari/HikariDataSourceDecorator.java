@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.hikari_cp;
+package com.googlecode.hotire.springdatajpa.core.data_source.hikari;
 
 import com.zaxxer.hikari.HikariDataSource;
 

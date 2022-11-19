@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.core.connection;
+package com.googlecode.hotire.springdatajpa.core.data_source.connection;
 
 
 import java.sql.Connection;

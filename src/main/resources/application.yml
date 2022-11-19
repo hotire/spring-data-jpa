@@ -3,7 +3,9 @@ spring:
     active: local
   aop:
     proxy-target-class: true
-
+  jpa:
+    open-in-view: false
+  datasource.hikari.maximum-pool-size: 1
 logging:
   level:
     org:
@@ -11,7 +13,6 @@ logging:
         engine:
           jdbc:
             spi.SqlExceptionHelper: OFF
-
 
 ---
 

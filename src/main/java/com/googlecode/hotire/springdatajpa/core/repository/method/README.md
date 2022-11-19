@@ -4,9 +4,25 @@
 
 RepositoryFactorySupport 에서 getRepository 시 QueryExecutorMethodInterceptor advice건다.
 
-### QueryExecutorMethodInterceptor
+- getQueryLookupStrategy
+    - 구현체 JpaRepositoryFactory 사용 
 
-Map<Method, RepositoryQuery>
+### QueryExecutorMethodInterceptor
+- Map<Method, RepositoryQuery>
+- lookupQuery
+
+### QueryLookupStrategy
+
+- Key 기본전략은 CREATE_IF_NOT_FOUND 으로 CreateIfNotFoundQueryLookupStrategy 사용된다.
+  - Key 설정은 DefaultRepositoryConfiguration / AnnotationRepositoryConfigurationSource
+
+### CreateIfNotFoundQueryLookupStrategy
+
+- lookupStrategy 
+- createStrategy : PartTreeJpaQuery 생성 
+
+### PartTreeJpaQuery
+
 
 ## RepositoryInformation
 
@@ -23,3 +39,4 @@ Map<Method, RepositoryQuery>
 ### SimpleJpaQuery : AbstractStringBasedJpaQuery : AbstractJpaQuery: RepositoryQuery
 
 내부적으로 Query 를 사용하게 됨. 
+

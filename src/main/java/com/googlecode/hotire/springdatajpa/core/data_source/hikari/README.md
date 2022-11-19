@@ -34,3 +34,9 @@ Connection connection = null;
 
 ### References
 - https://techblog.woowahan.com/2664/
+- https://lion-king.tistory.com/entry/JPA-JPA-Id-GenerationTypeAUTO-IDENTITY
+
+
+## Open Connection
+
+- https://stackoverflow.com/questions/65861226/when-is-a-db-connection-is-opened-in-java

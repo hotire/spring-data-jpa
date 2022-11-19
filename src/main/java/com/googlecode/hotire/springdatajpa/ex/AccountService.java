@@ -1,16 +1,13 @@
 package com.googlecode.hotire.springdatajpa.ex;
 
+import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 import java.util.List;
 import java.util.function.Consumer;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.googlecode.hotire.springdatajpa.n_p.AccountRepository;
 
 /**
  * EntityManager Life Cycle Test
@@ -43,7 +40,9 @@ public class AccountService {
     return accountRepository.save(account);
   }
 
+  @Transactional
   public List<Account> list() {
+    System.out.println("debug");
     return accountRepository.findAll();
   }
 

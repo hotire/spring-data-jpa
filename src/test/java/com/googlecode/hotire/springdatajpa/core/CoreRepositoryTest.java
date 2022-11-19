@@ -2,10 +2,12 @@ package com.googlecode.hotire.springdatajpa.core;
 
 import java.util.Optional;
 import javax.persistence.EntityManager;
+import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.transaction.TransactionManager;
 
 @Slf4j
 @DataJpaTest
@@ -16,6 +18,12 @@ class CoreRepositoryTest {
 
     @Autowired
     private CoreRepository coreRepository;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    private TransactionManager transactionManager;
 
     @Test
     void saveByEm() {
