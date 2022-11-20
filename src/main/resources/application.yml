@@ -34,9 +34,9 @@ spring:
   profiles: beta
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url:
-    username:
-    password:
+    url: jdbc:mysql://localhost:3306/jpa
+    username: root
+    password: 1234
   jpa:
     properties:
       hibernate:
@@ -48,7 +48,7 @@ spring:
       org.hibernate.envers.store_data_at_delete: true
     show_sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
       use-new-id-generator-mappings: true
 
 
