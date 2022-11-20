@@ -115,6 +115,28 @@ PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
 
 - https://techblog.woowahan.com/2606/
 
+
+## doBegin && Connection
+
+- JpaTransactionManager 
+- HibernateJpaDialect : JpaDialect
+  - beginTransaction()
+- TransactionImpl : EntityTransaction 
+  - begin
+- TransactionDriverControlImpl : TransactionDriver
+  - begin
+- LogicalConnectionManagedImpl : JdbcResourceTransaction
+  - begin
+  - getConnectionForTransactionManagement
+  - getPhysicalConnection
+  - acquireConnectionIfNeeded
+- NonContextualJdbcConnectionAccess : JdbcConnectionAccess
+  - obtainConnection()
+- DatasourceConnectionProviderImpl : ConnectionProvider
+  - getConnection()
+- HikariDataSource : DataSource
+
+
 ## References
 
 - https://wave1994.tistory.com/178
