@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import org.springframework.data.jpa.provider.QueryExtractor;
 import org.springframework.data.jpa.repository.query.EscapeCharacter;
 import org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy;
+import org.springframework.data.jpa.repository.query.JpaQueryMethodFactory;
 import org.springframework.data.repository.query.QueryLookupStrategy;
 import org.springframework.data.repository.query.QueryLookupStrategy.Key;
 import org.springframework.data.repository.query.QueryMethodEvaluationContextProvider;
@@ -18,9 +19,21 @@ public class JpaQueryLookupStrategyCore {
     /**
      * @see JpaQueryLookupStrategy#create(EntityManager, Key, QueryExtractor, QueryMethodEvaluationContextProvider, EscapeCharacter)
      */
-    public static QueryLookupStrategy create(
-        EntityManager em, @Nullable Key key, QueryExtractor extractor,
-        QueryMethodEvaluationContextProvider evaluationContextProvider, EscapeCharacter escape) {
-        return JpaQueryLookupStrategy.create(em, key, extractor, evaluationContextProvider, escape);
+//    public static QueryLookupStrategy create(
+//        EntityManager em, @Nullable Key key, QueryExtractor extractor,
+//        QueryMethodEvaluationContextProvider evaluationContextProvider, EscapeCharacter escape) {
+//        return JpaQueryLookupStrategy.create(em, key, extractor, evaluationContextProvider, escape);
+//    }
+
+
+    /**
+     * @see JpaQueryLookupStrategy#create(EntityManager, JpaQueryMethodFactory, Key, QueryMethodEvaluationContextProvider, EscapeCharacter)
+     */
+    public static QueryLookupStrategy create(EntityManager em,
+        JpaQueryMethodFactory queryMethodFactory,
+        @Nullable Key key, QueryMethodEvaluationContextProvider evaluationContextProvider,
+        EscapeCharacter escape) {
+        return JpaQueryLookupStrategy.create(em, queryMethodFactory, key, evaluationContextProvider,
+            escape);
     }
 }

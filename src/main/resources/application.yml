@@ -37,6 +37,7 @@ spring:
     url: jdbc:mysql://localhost:3306/jpa
     username: root
     password: 1234
+  datasource.hikari.maximum-pool-size: 10
   jpa:
     properties:
       hibernate:

@@ -9,6 +9,7 @@ import org.springframework.data.repository.core.support.RepositoryComposition.Re
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.util.TypeInformation;
 
 /**
  * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getRepository(Class, RepositoryFragments) 
@@ -32,6 +33,11 @@ public class RepositoryMetadataDecorator implements RepositoryMetadata {
     @Override
     public Class<?> getRepositoryInterface() {
         return getDelegate().getRepositoryInterface();
+    }
+
+    @Override
+    public TypeInformation<?> getReturnType(Method method) {
+        return getDelegate().getReturnType(method);
     }
 
     @Override

@@ -2,13 +2,12 @@ package com.googlecode.hotire.springdatajpa.core.repository;
 
 import java.lang.reflect.Method;
 import java.util.Set;
-
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.core.CrudMethods;
 import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.util.Streamable;
-
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.util.TypeInformation;
 
 /**
  * @see RepositoryInformation
@@ -68,6 +67,11 @@ public class RepositoryInformationDecorator implements RepositoryInformation {
     @Override
     public Class<?> getRepositoryInterface() {
         return getDelegate().getRepositoryInterface();
+    }
+
+    @Override
+    public TypeInformation<?> getReturnType(Method method) {
+        return getDelegate().getReturnType(method);
     }
 
     @Override
