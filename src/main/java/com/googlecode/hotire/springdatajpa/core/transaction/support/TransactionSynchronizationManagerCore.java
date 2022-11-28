@@ -11,6 +11,12 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 public class TransactionSynchronizationManagerCore {
 
     /**
+     * @see TransactionSynchronizationManager#currentTransactionReadOnly
+     */
+    private static final ThreadLocal<Boolean> currentTransactionReadOnly =
+        new NamedThreadLocal<>("Current transaction read-only status");
+
+    /**
      * @see TransactionSynchronizationManager#synchronizations
      */
     private static final ThreadLocal<Set<TransactionSynchronization>> synchronizations =
