@@ -8,6 +8,7 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.support.AbstractPlatformTransactionManager;
 import org.springframework.transaction.support.DefaultTransactionStatus;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 /**
  * @see TransactionManager
@@ -52,5 +53,12 @@ public class TransactionManagerCore {
      */
     protected void doRollback(final DefaultTransactionStatus status) throws TransactionException {
 
+    }
+
+    /**
+     * @see AbstractPlatformTransactionManager#prepareSynchronization(DefaultTransactionStatus, TransactionDefinition)
+     */
+    protected void prepareSynchronization(DefaultTransactionStatus status, TransactionDefinition definition) {
+        TransactionSynchronizationManager.setCurrentTransactionReadOnly(definition.isReadOnly());
     }
 }
