@@ -2,6 +2,7 @@ package com.googlecode.hotire.springdatajpa.core.transaction;
 
 import org.hibernate.TransactionException;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
+import org.springframework.lang.Nullable;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -60,5 +61,12 @@ public class TransactionManagerCore {
      */
     protected void prepareSynchronization(DefaultTransactionStatus status, TransactionDefinition definition) {
         TransactionSynchronizationManager.setCurrentTransactionReadOnly(definition.isReadOnly());
+    }
+
+    /**
+     * @see AbstractPlatformTransactionManager#getTransaction(TransactionDefinition)
+     */
+    public final org.springframework.transaction.TransactionStatus getTransaction(@Nullable TransactionDefinition definition) {
+        return null;
     }
 }
