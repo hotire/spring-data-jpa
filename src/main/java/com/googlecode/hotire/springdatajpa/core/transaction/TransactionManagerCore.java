@@ -57,6 +57,32 @@ public class TransactionManagerCore {
     }
 
     /**
+     * @see AbstractPlatformTransactionManager#prepareTransactionStatus(TransactionDefinition, Object, boolean, boolean, boolean, Object)
+     */
+    protected final DefaultTransactionStatus prepareTransactionStatus(
+        TransactionDefinition definition, @Nullable Object transaction, boolean newTransaction,
+        boolean newSynchronization, boolean debug, @Nullable Object suspendedResources) {
+        DefaultTransactionStatus status = newTransactionStatus(
+            definition, transaction, newTransaction, newSynchronization, debug, suspendedResources);
+        prepareSynchronization(status, definition);
+        return status;
+    }
+
+    /**
+     * @see AbstractPlatformTransactionManager#newTransactionStatus(TransactionDefinition, Object, boolean, boolean, boolean, Object) 
+     */
+    protected DefaultTransactionStatus newTransactionStatus(
+        TransactionDefinition definition, @Nullable Object transaction, boolean newTransaction,
+        boolean newSynchronization, boolean debug, @Nullable Object suspendedResources) {
+
+        boolean actualNewSynchronization = newSynchronization &&
+            !TransactionSynchronizationManager.isSynchronizationActive();
+        return new DefaultTransactionStatus(
+            transaction, newTransaction, actualNewSynchronization,
+            definition.isReadOnly(), debug, suspendedResources);
+    }
+
+    /**
      * @see AbstractPlatformTransactionManager#prepareSynchronization(DefaultTransactionStatus, TransactionDefinition)
      */
     protected void prepareSynchronization(DefaultTransactionStatus status, TransactionDefinition definition) {
