@@ -1,12 +1,19 @@
 package com.googlecode.hotire.springdatajpa.core;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.transaction.TransactionManager;
 
 @Slf4j
@@ -56,5 +63,25 @@ class CoreRepositoryTest {
     void findByName() {
         final Optional<Core> result = coreRepository.findByName("");
         log.info("{}", result);
+    }
+
+    @Test
+    void page() {
+        coreRepository.saveAll(IntStream.range(0, 1000)
+            .mapToObj(it -> new Core().setName(String.valueOf(it))).collect(Collectors.toList())
+        );
+        coreRepository.flush();
+
+        int count = 1;
+        Page<Core> result = coreRepository.findAll(PageRequest.of(0, 10, Sort.by(Direction.DESC, "name")));
+        System.out.println(result);
+        while (!result.isLast()) {
+            count++;
+            final Pageable next = result.getPageable().next();
+            result = coreRepository.findAll(next);
+            System.out.println(result.stream().map(Core::getName).collect(Collectors.joining()));
+        }
+
+        System.out.println(count);
     }
 }
