@@ -77,7 +77,7 @@ class CoreRepositoryTest {
         System.out.println(result);
         while (!result.isLast()) {
             count++;
-            final Pageable next = result.getPageable().next();
+            final Pageable next = result.nextPageable();
             result = coreRepository.findAll(next);
             System.out.println(result.stream().map(Core::getName).collect(Collectors.joining()));
         }
