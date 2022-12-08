@@ -5,6 +5,12 @@ spring:
     proxy-target-class: true
   jpa:
     open-in-view: false
+    properties:
+      hibernate:
+        session_factory:
+          interceptor: com.googlecode.hotire.springdatajpa.core.interceptor.CustomInterceptor
+        ejb:
+          interceptor: com.googlecode.hotire.springdatajpa.core.interceptor.CustomInterceptor
   datasource.hikari.maximum-pool-size: 1
 logging:
   level:
@@ -13,6 +19,9 @@ logging:
         engine:
           jdbc:
             spi.SqlExceptionHelper: OFF
+
+
+
 
 ---
 
