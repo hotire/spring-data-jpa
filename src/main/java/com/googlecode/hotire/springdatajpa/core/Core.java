@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.apache.kafka.common.protocol.types.Field.Str;
 
 @Setter
 @Getter
@@ -21,4 +22,6 @@ public class Core {
 
     @Access(AccessType.FIELD)
     private String name;
+
+    private Integer age;
 }

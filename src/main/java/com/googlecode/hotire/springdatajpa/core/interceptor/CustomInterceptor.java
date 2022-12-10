@@ -1,12 +1,21 @@
 package com.googlecode.hotire.springdatajpa.core.interceptor;
 
 import java.io.Serializable;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 @Slf4j
-public class CustomInterceptor extends EmptyInterceptor {
+@Component
+@RequiredArgsConstructor
+public class CustomInterceptor extends EmptyInterceptor implements HibernatePropertiesCustomizer {
+
+    private final ApplicationContext context;
 
     @Override
     public boolean onFlushDirty(
@@ -35,5 +44,10 @@ public class CustomInterceptor extends EmptyInterceptor {
         log.info("propertyNames : {}", propertyNames);
         log.info("types : {}", types);
         return false;
+    }
+
+    @Override
+    public void customize(Map<String, Object> hibernateProperties) {
+        hibernateProperties.put("hibernate.session_factory.interceptor", this);
     }
 }

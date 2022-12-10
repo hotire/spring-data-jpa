@@ -84,4 +84,13 @@ class CoreRepositoryTest {
 
         System.out.println(count);
     }
+
+    @Test
+    void update() {
+        final Core core = new Core().setName("hello").setAge(10);
+        coreRepository.saveAndFlush(core);
+        entityManager.clear();
+
+        coreRepository.saveAndFlush(core.setAge(20));
+    }
 }
