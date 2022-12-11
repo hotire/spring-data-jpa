@@ -137,6 +137,23 @@ PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
 - HikariDataSource : DataSource
 
 
+## TransactionSynchronization
+
+- TransactionSynchronizationManager.isActualTransactionActive : 트랜잭션 여부 체크
+- TransactionAspectSupportCore.currentTransactionStatus : commit 여부 체크로, TransactionSynchronization 안에서 TransactionSynchronization 등록하는걸 확인하기 용도
+
+
+TransactionSynchronizationManager.clear() 호출시 isActualTransactionActive 초기화된다.
+- by AbstractPlatformTransactionManager.cleanupAfterCompletion 에서 호출한다.
+- by AbstractPlatformTransactionManager.processRollback or processCommit
+- by AbstractPlatformTransactionManager.commit
+- by TransactionAspectSupport.commitTransactionAfterReturning
+
+
+
+
+
+
 ## References
 
 - https://wave1994.tistory.com/178
