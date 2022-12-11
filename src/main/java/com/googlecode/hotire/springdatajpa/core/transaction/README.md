@@ -145,6 +145,8 @@ PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
 
 ### isActualTransactionActive
 
+isActualTransactionActive 생성
+
 - TransactionAspectSupport.invokeWithinTransaction
 - TransactionAspectSupport.createTransactionIfNecessary 
 - AbstractPlatformTransactionManager.getTransaction()
@@ -152,7 +154,9 @@ PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
 - AbstractPlatformTransactionManager.prepareSynchronization : TransactionSynchronizationManager.isActualTransactionActive 설정 
 
 
+isActualTransactionActive 초기화 
 TransactionSynchronizationManager.clear() 호출시 isActualTransactionActive 초기화된다.
+
 - by AbstractPlatformTransactionManager.cleanupAfterCompletion 에서 호출한다.
 - by AbstractPlatformTransactionManager.processRollback or processCommit
 - by AbstractPlatformTransactionManager.commit
@@ -160,10 +164,19 @@ TransactionSynchronizationManager.clear() 호출시 isActualTransactionActive �
 
 ### currentTransactionStatus
 
+currentTransactionStatus 생성 
+
 - TransactionAspectSupport.invokeWithinTransaction
 - TransactionAspectSupport.prepareTransactionInfo : TransactionInfo 생성
 - prepareTransactionInfo 내부에서 bindToThread : 스레드로컬에 바인딩
 
+
+currentTransactionStatus 초기화 
+
+- restoreThreadLocalStatus
+- by TransactionAspectSupport.cleanupTransactionInfo
+
+completeTransactionAfterThrowing와 commitTransactionAfterReturning 사이에 cleanupTransactionInfo 호출한다.
 
 
 
