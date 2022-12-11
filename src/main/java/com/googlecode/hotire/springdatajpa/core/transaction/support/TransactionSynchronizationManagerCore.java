@@ -37,6 +37,12 @@ public class TransactionSynchronizationManagerCore {
         return TransactionSynchronizationManager.isSynchronizationActive();
     }
 
+    /**
+     * @see TransactionSynchronizationManager#isActualTransactionActive()
+     */
+    public static boolean isActualTransactionActive() {
+        return TransactionSynchronizationManager.isActualTransactionActive();
+    }
 
     /**
      * @see TransactionSynchronizationManager#setCurrentTransactionReadOnly(boolean)
