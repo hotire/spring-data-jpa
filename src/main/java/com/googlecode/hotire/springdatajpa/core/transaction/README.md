@@ -140,7 +140,16 @@ PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
 ## TransactionSynchronization
 
 - TransactionSynchronizationManager.isActualTransactionActive : 트랜잭션 여부 체크
-- TransactionAspectSupportCore.currentTransactionStatus : commit 여부 체크로, TransactionSynchronization 안에서 TransactionSynchronization 등록하는걸 확인하기 용도
+- TransactionAspectSupport.currentTransactionStatus : commit 여부 체크로, TransactionSynchronization 안에서 TransactionSynchronization 등록하는걸 확인하기 용도
+
+
+### isActualTransactionActive
+
+- TransactionAspectSupport.invokeWithinTransaction
+- TransactionAspectSupport.createTransactionIfNecessary 
+- AbstractPlatformTransactionManager.getTransaction()
+- AbstractPlatformTransactionManager.startTransaction
+- AbstractPlatformTransactionManager.prepareSynchronization : TransactionSynchronizationManager.isActualTransactionActive 설정 
 
 
 TransactionSynchronizationManager.clear() 호출시 isActualTransactionActive 초기화된다.
@@ -148,6 +157,13 @@ TransactionSynchronizationManager.clear() 호출시 isActualTransactionActive �
 - by AbstractPlatformTransactionManager.processRollback or processCommit
 - by AbstractPlatformTransactionManager.commit
 - by TransactionAspectSupport.commitTransactionAfterReturning
+
+### currentTransactionStatus
+
+- TransactionAspectSupport.invokeWithinTransaction
+- TransactionAspectSupport.prepareTransactionInfo : TransactionInfo 생성
+- prepareTransactionInfo 내부에서 bindToThread : 스레드로컬에 바인딩
+
 
 
 
