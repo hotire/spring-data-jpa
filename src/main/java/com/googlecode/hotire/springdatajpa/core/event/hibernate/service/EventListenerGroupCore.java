@@ -4,6 +4,8 @@ import org.hibernate.event.service.spi.EventListenerGroup;
 
 /**
  * @see EventListenerGroup
+ * @see org.hibernate.event.service.internal.EventListenerGroupImpl
+ * @see org.hibernate.event.service.internal.PostCommitEventListenerGroupImpl
  */
 public class EventListenerGroupCore {
 
