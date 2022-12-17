@@ -9,6 +9,11 @@ import org.hibernate.event.service.spi.EventListenerGroup;
  */
 public class EventListenerGroupCore<T> {
 
+    /**
+     * @see org.hibernate.event.service.internal.EventListenerGroupImpl#listeners
+     */
+    private T[] listeners = null;
+
 
     /**
      * @see EventListenerGroup#appendListener(Object)
