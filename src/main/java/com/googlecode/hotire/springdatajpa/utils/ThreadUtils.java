@@ -1,5 +1,8 @@
 package com.googlecode.hotire.springdatajpa.utils;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -12,5 +15,9 @@ public final class ThreadUtils {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static <T> Future<T> newThreadSubmit(Callable<T> callable) {
+        return Executors.newSingleThreadExecutor().submit(callable);
     }
 }
