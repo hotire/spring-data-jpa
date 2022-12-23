@@ -1,6 +1,7 @@
 package com.googlecode.hotire.springdatajpa.core.immutable;
 
-import java.util.concurrent.Executors;
+import static com.googlecode.hotire.springdatajpa.utils.ThreadUtils.newThreadSubmit;
+
 import javax.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -19,9 +20,9 @@ class ImmutableEntityRepositoryTest {
 
     @Test
     void update() throws InterruptedException {
-        Executors.newSingleThreadExecutor().submit(() -> {
+        newThreadSubmit(() -> {
             log.info("save");
-            repository.saveAndFlush(new ImmutableEntity().setName("hello"));
+            return repository.saveAndFlush(new ImmutableEntity().setName("hello"));
         });
         Thread.sleep(1000L);
         log.info("update");
