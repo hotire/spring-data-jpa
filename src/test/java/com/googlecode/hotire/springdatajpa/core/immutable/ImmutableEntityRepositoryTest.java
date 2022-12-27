@@ -18,7 +18,7 @@ class ImmutableEntityRepositoryTest {
     private EntityManager entityManager;
 
     @Test
-    void update() throws InterruptedException {
+    void update()  {
         ThreadUtils.newThreadSubmit(() -> {
             log.info("save");
             return repository.saveAndFlush(new ImmutableEntity().setName("hello"));
