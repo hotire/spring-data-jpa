@@ -19,11 +19,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 
 @Configuration
-//@EnableJpaRepositories(
-//    entityManagerFactoryRef = "entityManagerFactory",
-//    transactionManagerRef = "transactionManager",
-//    basePackages = { "com.googlecode.hotire.springdatajpa" }
-//)
+@EnableJpaRepositories(
+    entityManagerFactoryRef = "entityManagerFactory",
+    transactionManagerRef = "transactionManager",
+    basePackages = { "com.googlecode.hotire.springdatajpa" }
+)
 public class LazyDataSourceConfig {
 
     @Bean
@@ -76,15 +76,4 @@ public class LazyDataSourceConfig {
         tm.setEntityManagerFactory(entityManagerFactory(builder).getObject());
         return tm;
     }
-
-    @Configuration
-    @EnableJpaRepositories(
-        entityManagerFactoryRef = "entityManagerFactory",
-        transactionManagerRef = "transactionManager",
-        basePackages = { "com.googlecode.hotire.springdatajpa" }
-    )
-    public static class Inner {
-
-    }
-
 }
