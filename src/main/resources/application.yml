@@ -20,8 +20,17 @@ logging:
           jdbc:
             spi.SqlExceptionHelper: OFF
 
-
-
+datasource:
+  main:
+    jdbc-url: jdbc:h2:mem:hotire
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  read:
+    jdbc-url: jdbc:h2:mem:hotire
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
 ---
 
@@ -60,6 +69,5 @@ spring:
     hibernate:
       ddl-auto: create-drop
       use-new-id-generator-mappings: true
-
 
 
