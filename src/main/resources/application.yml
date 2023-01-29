@@ -22,12 +22,12 @@ logging:
 
 datasource:
   main:
-    jdbc-url: jdbc:h2:mem:hotire
+    jdbc-url: jdbc:h2:mem:hotire;Mode=MYSQL
     username: sa
     password:
     driver-class-name: org.h2.Driver
   read:
-    jdbc-url: jdbc:h2:mem:hotire
+    jdbc-url: jdbc:h2:mem:hotire;Mode=MYSQL
     username: sa
     password:
     driver-class-name: org.h2.Driver
