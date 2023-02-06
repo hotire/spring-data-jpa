@@ -1,5 +1,6 @@
 package com.googlecode.hotire.springdatajpa.core;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,10 @@ public class CoreService {
     public void listInTransactional() {
         System.out.println("debug");
         coreRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Core> findByName(String name) {
+        return coreRepository.findByName(name);
     }
 }
