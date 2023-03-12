@@ -14,7 +14,7 @@ public interface AttributeConverterCore<X, Y> {
     Y convertToDatabaseColumn (X attribute);
 
     /**
-     * @see AttributeConverter#convertToEntityAttribute(Object) 
+     * @see AttributeConverter#convertToEntityAttribute(Object)
      */
     X convertToEntityAttribute (Y dbData);
 }
