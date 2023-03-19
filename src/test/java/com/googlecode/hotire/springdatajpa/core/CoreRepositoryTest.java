@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -92,5 +93,23 @@ class CoreRepositoryTest {
         entityManager.clear();
 
         coreRepository.saveAndFlush(core.setAge(20));
+    }
+
+    @Test
+    void QBE() {
+        // given
+        final Core core = new Core()
+            .setAge(10)
+            .setName("hello");
+
+        entityManager.persist(core);
+        entityManager.flush();
+        entityManager.clear();
+
+        // when
+        final Optional<Core> result = coreRepository.findOne(Example.of(core));
+
+        // no assert
+        log.info("{}", result.orElse(null));
     }
 }
