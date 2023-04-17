@@ -7,4 +7,11 @@ import org.hibernate.engine.jdbc.spi.SqlStatementLogger;
  */
 public class SqlStatementLoggerCore {
 
+    /**
+     * @see SqlStatementLogger#logSlowQuery(String, long) 
+     */
+    public void logSlowQuery(String sql, long startTimeNanos) {
+        
+    }
+
 }
