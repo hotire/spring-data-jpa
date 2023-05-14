@@ -1,7 +1,15 @@
 package com.googlecode.hotire.springdatajpa.core.transaction.support;
 
-/**
- * @see org.springframework.transaction.support.TransactionSynchronization
+import org.springframework.transaction.support.TransactionSynchronization;
+
+/** 
+ * @see TransactionSynchronization
  */
 public class TransactionSynchronizationCore {
+
+    /**
+     * @see TransactionSynchronization#afterCompletion(int) 
+     */
+    void afterCompletion(int status) {
+    }
 }
