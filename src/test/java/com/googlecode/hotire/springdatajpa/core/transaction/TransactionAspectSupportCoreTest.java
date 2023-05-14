@@ -67,5 +67,6 @@ class TransactionAspectSupportCoreTest {
         log.info("isCompleted : {}", status.isCompleted());
         log.info("currentTransactionStatus : {}", currentTransactionStatus().orElse(null));
         log.info("isActualTransactionActive : {}", TransactionSynchronizationManager.isActualTransactionActive());
+        log.info("isSynchronizationActive : {}", TransactionSynchronizationManager.isSynchronizationActive());
     }
 }
