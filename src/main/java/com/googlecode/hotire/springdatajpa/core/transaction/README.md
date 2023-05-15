@@ -140,6 +140,7 @@ PlatformTransactionManager, AbstractPlatformTransactionManager의 구현체
 ## TransactionSynchronization
 
 - TransactionSynchronizationManager.isActualTransactionActive : 트랜잭션 여부 체크
+- TransactionSynchronizationManager.isSynchronizationActive : 트랜잭션 동기화 활성화 
 - TransactionAspectSupport.currentTransactionStatus : commit 여부 체크로, TransactionSynchronization 안에서 TransactionSynchronization 등록하는걸 확인하기 용도
 
 
