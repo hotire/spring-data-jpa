@@ -12,6 +12,9 @@ spring:
 #        ejb:
 #          interceptor: com.googlecode.hotire.springdatajpa.core.interceptor.CustomInterceptor
   datasource.hikari.maximum-pool-size: 1
+  data:
+    rest:
+      detectionStrategy: ANNOTATED
 logging:
   level:
     org:
@@ -31,6 +34,10 @@ datasource:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
+
+
+
 
 ---
 
