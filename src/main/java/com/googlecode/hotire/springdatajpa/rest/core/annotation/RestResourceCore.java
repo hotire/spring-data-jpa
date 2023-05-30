@@ -1,4 +1,4 @@
-package com.googlecode.hotire.springdatajpa.rest;
+package com.googlecode.hotire.springdatajpa.rest.core.annotation;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
