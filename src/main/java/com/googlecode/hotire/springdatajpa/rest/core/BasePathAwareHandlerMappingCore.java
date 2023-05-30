@@ -11,7 +11,7 @@ public class BasePathAwareHandlerMappingCore {
 
 
     /**
-     * @see BasePathAwareHandlerMapping#setPathPrefixes(Map) 
+     * @see BasePathAwareHandlerMapping#setPathPrefixes(Map)
      */
     public void setPathPrefixes(Map<String, Predicate<Class<?>>> prefixes) {
     }
