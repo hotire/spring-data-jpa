@@ -5,6 +5,6 @@ import org.springframework.data.rest.webmvc.BasePathAwareController;
 /**
  * @see BasePathAwareController
  */
-public class BasePathAwareControllerCore {
+public @interface BasePathAwareControllerCore {
 
 }

@@ -5,6 +5,6 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 /**
  * @see RepositoryRestController
  */
-public class RepositoryRestControllerCore {
+public @interface RepositoryRestControllerCore {
 
 }

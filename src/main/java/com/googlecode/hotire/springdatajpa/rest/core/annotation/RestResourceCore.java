@@ -5,6 +5,6 @@ import org.springframework.data.rest.core.annotation.RestResource;
 /**
  * @see RestResource
  */
-public class RestResourceCore {
+public @interface RestResourceCore {
 
 }
