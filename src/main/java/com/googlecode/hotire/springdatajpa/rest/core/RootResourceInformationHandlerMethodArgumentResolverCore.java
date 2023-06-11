@@ -13,7 +13,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class RootResourceInformationHandlerMethodArgumentResolverCore {
 
     /**
-     * @see RootResourceInformationHandlerMethodArgumentResolver#resolveArgument(MethodParameter, ModelAndViewContainer, NativeWebRequest, WebDataBinderFactory) 
+     * @see RootResourceInformationHandlerMethodArgumentResolver#resolveArgument(MethodParameter, ModelAndViewContainer, NativeWebRequest, WebDataBinderFactory)
      */
     public RootResourceInformation resolveArgument(
         MethodParameter parameter, ModelAndViewContainer mavContainer,
