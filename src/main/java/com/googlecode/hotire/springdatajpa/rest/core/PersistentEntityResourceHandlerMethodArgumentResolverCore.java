@@ -18,7 +18,7 @@ public class PersistentEntityResourceHandlerMethodArgumentResolverCore {
     private RootResourceInformationHandlerMethodArgumentResolver resourceInformationHandlerMethodArgumentResolver;
 
     /**
-     * @see PersistentEntityResourceHandlerMethodArgumentResolverCore#resolveArgument(MethodParameter, ModelAndViewContainer, NativeWebRequest, WebDataBinderFactory) 
+     * @see PersistentEntityResourceHandlerMethodArgumentResolver#resolveArgument(MethodParameter, ModelAndViewContainer, NativeWebRequest, WebDataBinderFactory)
      */
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
         NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
