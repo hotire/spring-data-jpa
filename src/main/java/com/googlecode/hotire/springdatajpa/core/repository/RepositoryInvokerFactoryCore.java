@@ -16,7 +16,7 @@ public interface RepositoryInvokerFactoryCore {
      * @see RepositoryInvokerFactory#getInvokerFor(Class) 
      * @see DefaultRepositoryInvokerFactory#getInvokerFor(Class) 
      * @see DefaultRepositoryInvokerFactory#prepareInvokers(Class) 
-     * @see DefaultRepositoryInvokerFactory#createInvoker(RepositoryInformation, Object) 
+     * @see DefaultRepositoryInvokerFactory#createInvoker(RepositoryInformation, Object)
      */
     RepositoryInvoker getInvokerFor(Class<?> domainType);
 }
