@@ -18,6 +18,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 
+/**
+ * @see RoutingDataSource#determineCurrentLookupKey()
+ */
 @Configuration
 @EnableJpaRepositories(
     entityManagerFactoryRef = "entityManagerFactory",
