@@ -2,6 +2,7 @@ package com.googlecode.hotire.springdatajpa.core.repository;
 
 
 import java.util.Optional;
+import org.springframework.data.repository.core.support.RepositoryComposition.RepositoryFragments;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.repository.query.QueryLookupStrategy;
@@ -23,5 +24,12 @@ public class RepositoryFactorySupportCore {
     protected Optional<QueryLookupStrategy> getQueryLookupStrategy(@Nullable Key key,
         QueryMethodEvaluationContextProvider evaluationContextProvider) {
         return Optional.empty();
+    }
+
+    /**
+     * @see RepositoryFactorySupport#getRepository(Class, RepositoryFragments) 
+     */
+    public <T> T getRepository(Class<T> repositoryInterface, RepositoryFragments fragments) {
+        return null;
     }
 }
