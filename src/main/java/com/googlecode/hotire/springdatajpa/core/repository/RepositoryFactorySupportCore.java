@@ -2,9 +2,10 @@ package com.googlecode.hotire.springdatajpa.core.repository;
 
 
 import java.util.Optional;
+import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.repository.core.support.RepositoryComposition.RepositoryFragments;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
-import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.repository.query.QueryLookupStrategy;
 import org.springframework.data.repository.query.QueryLookupStrategy.Key;
 import org.springframework.data.repository.query.QueryMethodEvaluationContextProvider;
@@ -16,6 +17,11 @@ import org.springframework.lang.Nullable;
  * @see JpaRepositoryFactory
  */
 public class RepositoryFactorySupportCore {
+
+    /**
+     * @see RepositoryFactorySupport#classLoader
+     */
+    private ClassLoader classLoader = org.springframework.util.ClassUtils.getDefaultClassLoader();
 
     /**
      * @see RepositoryFactorySupport#getQueryLookupStrategy(Key, QueryMethodEvaluationContextProvider)
@@ -30,6 +36,8 @@ public class RepositoryFactorySupportCore {
      * @see RepositoryFactorySupport#getRepository(Class, RepositoryFragments) 
      */
     public <T> T getRepository(Class<T> repositoryInterface, RepositoryFragments fragments) {
-        return null;
+        ProxyFactory result = new ProxyFactory();
+        T repository = (T) result.getProxy(classLoader);
+        return repository;
     }
 }
