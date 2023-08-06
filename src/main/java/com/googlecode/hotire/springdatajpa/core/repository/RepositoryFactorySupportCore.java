@@ -2,6 +2,7 @@ package com.googlecode.hotire.springdatajpa.core.repository;
 
 
 import java.util.Optional;
+import org.aopalliance.aop.Advice;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.repository.core.support.RepositoryComposition.RepositoryFragments;
@@ -34,6 +35,7 @@ public class RepositoryFactorySupportCore {
 
     /**
      * @see RepositoryFactorySupport#getRepository(Class, RepositoryFragments) 
+     * @see ProxyFactory#addAdvice(Advice) 
      */
     public <T> T getRepository(Class<T> repositoryInterface, RepositoryFragments fragments) {
         ProxyFactory result = new ProxyFactory();
