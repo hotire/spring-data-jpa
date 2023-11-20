@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CursorRepository extends JpaRepository<Cursor, Long> {
     Stream<Cursor> streamAllBy();
+    Stream<Cursor> streamAllByOrderById();
 }

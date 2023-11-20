@@ -15,5 +15,6 @@ class CursorRepositoryTest {
     @Transactional
     void stream() {
         cursorRepository.streamAllBy();
+        cursorRepository.streamAllByOrderById();
     }
 }
