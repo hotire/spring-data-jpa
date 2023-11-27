@@ -180,7 +180,9 @@ currentTransactionStatus 초기화
 completeTransactionAfterThrowing와 commitTransactionAfterReturning 사이에 cleanupTransactionInfo 호출한다.
 
 
+### JpaTransactionManager 동작 원리
 
+- https://obv-cloud.com/40
 
 
 

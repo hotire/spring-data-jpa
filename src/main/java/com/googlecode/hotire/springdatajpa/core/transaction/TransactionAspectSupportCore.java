@@ -8,6 +8,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.interceptor.TransactionAttribute;
 import org.springframework.transaction.support.AbstractPlatformTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
 
 /**
  * @see TransactionAspectSupport
@@ -15,6 +16,8 @@ import org.springframework.transaction.support.AbstractPlatformTransactionManage
  * Transaction 동작 원리
  * @see TransactionAspectSupport#createTransactionIfNecessary(PlatformTransactionManager, TransactionAttribute, String)
  * @see AbstractPlatformTransactionManager#getTransaction(TransactionDefinition)
+ * @see AbstractPlatformTransactionManager#startTransaction(TransactionDefinition, Object, boolean, org.springframework.transaction.support.AbstractPlatformTransactionManager.SuspendedResourcesHolder)
+ * @see JpaTransactionManager#doBegin(Object, TransactionDefinition)
  */
 public class TransactionAspectSupportCore {
 
