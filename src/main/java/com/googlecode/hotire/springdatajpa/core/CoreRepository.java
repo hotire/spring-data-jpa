@@ -13,4 +13,6 @@ public interface CoreRepository extends JpaRepository<Core, Long> {
     Optional<Core> nativeFindById(Long id);
 
     Optional<Core> findByName(String name);
+
+    CoreProjection getByName(String name);
 }

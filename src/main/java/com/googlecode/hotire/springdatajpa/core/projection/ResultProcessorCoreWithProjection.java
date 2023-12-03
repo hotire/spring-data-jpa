@@ -17,4 +17,13 @@ public class ResultProcessorCoreWithProjection {
         return null;
     }
 
+
+
+    /**
+     * @see ResultProcessor.ProjectingConverter
+     */
+    static class ProjectingConverter {
+
+    }
+
 }

@@ -34,4 +34,9 @@ public class CoreController {
     public void findByName(@RequestParam String name) {
         coreRepository.findByName(name);
     }
+
+    @GetMapping("/get-by-name")
+    public void getByName(@RequestParam String name) {
+        coreRepository.getByName(name);
+    }
 }
