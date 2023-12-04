@@ -11,12 +11,15 @@ public class ResultProcessorCoreWithProjection {
 
 
     /**
-     * @see ResultProcessor#processResult(Object, Converter) 
+     * @see ResultProcessor#processResult(Object, Converter)
+     *
+     * @see org.hibernate.jpa.spi.CriteriaQueryTupleTransformer.TupleImpl
+     * case projection : source is TupleImpl
+     * case entity : source is entity
      */
     public <T> T processResult(@Nullable Object source, Converter<Object, Object> preparingConverter) {
         return null;
     }
-
 
 
     /**
