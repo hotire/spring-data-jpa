@@ -1,6 +1,8 @@
 package com.googlecode.hotire.springdatajpa.core.projection;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.data.repository.query.ResultProcessor;
 import org.springframework.lang.Nullable;
 
@@ -25,7 +27,13 @@ public class ResultProcessorCoreWithProjection {
     /**
      * @see ResultProcessor.ProjectingConverter
      */
+    @RequiredArgsConstructor
     static class ProjectingConverter {
+
+        /**
+         * @see org.springframework.data.projection.ProjectionFactory;
+         */
+        private final ProjectionFactory factory;
 
     }
 
