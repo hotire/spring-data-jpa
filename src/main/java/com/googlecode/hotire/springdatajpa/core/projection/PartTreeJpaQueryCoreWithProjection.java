@@ -17,7 +17,7 @@ public class PartTreeJpaQueryCoreWithProjection {
 
 
         /**
-         * @see PartTreeJpaQuery.QueryPreparer#createCreator(JpaParametersParameterAccessor) 
+         * @see PartTreeJpaQuery.QueryPreparer#createCreator(JpaParametersParameterAccessor)
          */
         public Query createQuery(JpaParametersParameterAccessor accessor) {
             return null;
