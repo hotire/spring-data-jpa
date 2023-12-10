@@ -1,6 +1,8 @@
 package com.googlecode.hotire.springdatajpa.core;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.persistence.EntityManager;
@@ -95,6 +97,9 @@ class CoreRepositoryTest {
         coreRepository.saveAndFlush(core.setAge(20));
     }
 
+    /**
+     * Query By Example
+     */
     @Test
     void QBE() {
         // given
@@ -111,5 +116,18 @@ class CoreRepositoryTest {
 
         // no assert
         log.info("{}", result.orElse(null));
+    }
+
+    @Test
+    void saveAll() throws InterruptedException {
+        Executors.newSingleThreadExecutor().submit(() -> {
+            coreRepository.saveAndFlush(new Core().setName("n1"));
+            coreRepository.saveAndFlush(new Core().setName("n2"));
+            coreRepository.saveAndFlush(new Core().setName("n3"));
+        });
+        Thread.sleep(1000L);
+        final List<Core> coreList = coreRepository.findAll();
+        coreRepository.saveAll(coreList.stream().map(it -> it.setAge(10)).collect(Collectors.toList()));
+        entityManager.flush();
     }
 }

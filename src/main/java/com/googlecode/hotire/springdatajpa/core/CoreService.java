@@ -1,6 +1,7 @@
 package com.googlecode.hotire.springdatajpa.core;
 
 import java.util.Optional;
+import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class CoreService {
     private final CoreRepository coreRepository;
+
+    @PostConstruct
+    public void init() {
+        coreRepository.save(new Core().setName("n1"));
+        coreRepository.save(new Core().setName("n2"));
+        coreRepository.save(new Core().setName("n3"));
+    }
 
     @Transactional
     public void transactional() throws InterruptedException {
