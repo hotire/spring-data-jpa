@@ -3,9 +3,11 @@ package com.googlecode.hotire.springdatajpa.core.bootstrap;
 import javax.persistence.EntityManagerFactory;
 import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 /**
  * @see AbstractEntityManagerFactoryBean
+ * @see LocalContainerEntityManagerFactoryBean
  */
 public class AbstractEntityManagerFactoryBeanCoreWithBootstrap {
 
