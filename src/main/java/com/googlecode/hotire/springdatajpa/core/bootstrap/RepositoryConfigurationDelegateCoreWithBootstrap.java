@@ -13,7 +13,7 @@ public class RepositoryConfigurationDelegateCoreWithBootstrap {
 
 
     /**
-     * @see RepositoryConfigurationDelegate#potentiallyLazifyRepositories(Map, BeanDefinitionRegistry, BootstrapMode) 
+     * @see RepositoryConfigurationDelegate#potentiallyLazifyRepositories(Map, BeanDefinitionRegistry, BootstrapMode)
      */
     private static void potentiallyLazifyRepositories(
         Map<String, RepositoryConfiguration<?>> configurations,
