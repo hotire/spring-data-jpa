@@ -1,6 +1,7 @@
 package com.googlecode.hotire.springdatajpa.core.bootstrap;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceException;
 import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -22,5 +23,13 @@ public class AbstractEntityManagerFactoryBeanCoreWithBootstrap {
      */
     private EntityManagerFactory buildNativeEntityManagerFactory() {
         return null;
+    }
+
+
+    /**
+     * @see AbstractEntityManagerFactoryBean#afterPropertiesSet()
+     */
+    public void afterPropertiesSet() throws PersistenceException {
+
     }
 }
