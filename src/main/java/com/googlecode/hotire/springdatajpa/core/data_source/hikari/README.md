@@ -40,3 +40,7 @@ Connection connection = null;
 ## Open Connection
 
 - https://stackoverflow.com/questions/65861226/when-is-a-db-connection-is-opened-in-java
+
+## test-while-idle
+
+- https://pkgonan.github.io/2018/04/HikariCP-test-while-idle
